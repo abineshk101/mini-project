@@ -1,0 +1,21 @@
+.body{
+    text-align: center;
+    font-size: x-large;
+    font-family:'Times New Roman', Times, serif;
+    padding: 5%;
+    background-color: black;
+    color: white;
+}
+.card{
+    background-color: black;
+    margin-left: 35%;
+    margin-top: 1%;
+}
+.but{
+    padding-left: 20%;
+    padding-right: 20%;
+    background-color: coral;
+}
+.full{
+    background-color: rgb(177, 234, 248);
+}
