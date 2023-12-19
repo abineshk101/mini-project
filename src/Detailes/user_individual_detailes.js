@@ -15,6 +15,9 @@ function UserIndividualDetailes() {
   //   axios.get("https://9e4a60c7-d991-48dc-a0a2-fba826b0bf94.mock.pstmn.io/groupdetailes")
   //     .then(res => dispatch(individualData(res.data)))
   // }, [])
+  const razorpay=()=>{
+    window.location="https://rzp.io/i/R7r95VQWB"
+  }
   return (
     <>
     <div className="box">
@@ -32,7 +35,7 @@ function UserIndividualDetailes() {
         <Card.Text>
           Amount paid
         </Card.Text>
-        <Button variant="primary">Pay</Button>
+        <Button variant="primary" onClick={()=>razorpay()}>Pay</Button>
       </Card.Body>
     </Card>
     </div>
