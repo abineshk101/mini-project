@@ -6,15 +6,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ContactUs from './Detailes/email';
 import { Provider } from 'react-redux';
-import { Store } from '@reduxjs/toolkit';
-
+import store from './redux/store';
 import UserIndividualDetailes from './Detailes/user_individual_detailes'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import UserIndividualDetailes from './Detailes/user_individual_detailes'
 const router = createBrowserRouter([
   {
    path:"/userlist",
