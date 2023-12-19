@@ -1,5 +1,7 @@
 import './App.css';
-import Sample from './sample';
+import AcceptbyAdmin from './group_create/user_list';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -9,8 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 const router = createBrowserRouter([
   {
-    path: "/sample",
-    element: <Sample />,
+   path:"/userlist",
+   element:<AcceptbyAdmin />
   },
   {
     path:"/",
@@ -20,10 +22,7 @@ const router = createBrowserRouter([
 
 function App() {
   return(
-
-    <React.StrictMode>
     <RouterProvider router={router} />
-    </React.StrictMode>
   )
 }
 

@@ -1,11 +1,12 @@
 import React from "react";
-function AcceptbyAdmin()
+
+function GroupDetailes()
 {
 
     return(
         <>
-        
+       
         </>
     )
 }
-export default AcceptbyAdmin
+export default GroupDetailes
