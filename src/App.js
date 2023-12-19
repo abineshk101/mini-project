@@ -1,5 +1,7 @@
 import './App.css';
-import Sample from './sample';
+import AcceptbyAdmin from './group_create/user_list';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -9,23 +11,29 @@ import ContactUs from './Detailes/email';
 import { Provider } from 'react-redux';
 import { Store } from '@reduxjs/toolkit';
 
-
+import UserIndividualDetailes from './Detailes/user_individual_detailes'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import UserIndividualDetailes from './Detailes/user_individual_detailes'
 const router = createBrowserRouter([
   {
-    path: "/sample",
-    element: <Sample />,
+   path:"/userlist",
+   element:<AcceptbyAdmin />
   },
   {
     path:"/",
     element:<UserIndividualDetailes/>
+  },
+ 
+  {
+    path:"/email",
+    element:<ContactUs/>
   }
 ]);
 
 function App() {
   return(
-    <Provider >
+    <Provider store={store} >
    
     <RouterProvider router={router} />
     
