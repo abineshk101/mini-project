@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './style.css'
+import emailjs from 'emailjs-com'
 // import { useSelector,useDispatch } from "react-redux";
 
 
@@ -17,6 +18,9 @@ function UserIndividualDetailes() {
   // }, [])
   const razorpay=()=>{
     window.location="https://rzp.io/i/R7r95VQWB"
+  }
+  const emailSend=()=>{
+    
   }
   return (
     <>
@@ -36,6 +40,7 @@ function UserIndividualDetailes() {
           Amount paid
         </Card.Text>
         <Button variant="primary" onClick={()=>razorpay()}>Pay</Button>
+        <Button variant="primary" onClick={()=>emailSend()}>emailSend</Button>
       </Card.Body>
     </Card>
     </div>

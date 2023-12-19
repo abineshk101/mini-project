@@ -5,6 +5,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ContactUs from './Detailes/email';
+import { Provider } from 'react-redux';
+import { Store } from '@reduxjs/toolkit';
 
 
 import React from 'react';
@@ -22,10 +25,11 @@ const router = createBrowserRouter([
 
 function App() {
   return(
-
-    <React.StrictMode>
+    <Provider >
+   
     <RouterProvider router={router} />
-    </React.StrictMode>
+    
+    </Provider>
   )
 }
 
