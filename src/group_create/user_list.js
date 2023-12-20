@@ -1,19 +1,19 @@
 import React from "react";
-import { useState } from "react";
+import { useDispatch,useSelector} from "react-redux";
+import { addMembers } from "../redux/create_slice";
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table';
 import axios from "axios";
 
 function AcceptbyAdmin(){
-    const [user,set_user]=useState(["abi","ajin"])
+    let userlist=useSelector((state)=>state.userdetail.membersList)
+    let dispatch=useDispatch()
+    console.log(userlist)
     axios({
         method:"GET",
         url:"https://jsonplaceholder.typicode.com/users",
     }).then(function(response){
-        for (let n in response.data){
-            // let tot=[...user,set_user(response.data[n].username)]
-            // console.log(tot)
-        }
+        dispatch(addMembers(response))
     })
     
     

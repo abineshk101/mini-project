@@ -3,16 +3,28 @@ import { createSlice} from '@reduxjs/toolkit'
 const counterSlice = createSlice({
   name: 'userdetail',
   initialState: {
-    value: 0
+    membersList: [],
+    groupdetailes:{
+      groupname:"",
+      admin:{name:"",email:"",phone:0},
+      totalmonth:0,
+      deadline:0,
+      number_of_memeber:0,
+      totalamount:0,
+      amountpermonth:0
+
+  }
   },
   reducers: {
-    incremented: state => {
-
+    addMembers: (state,actions) => {
+        state.membersList=actions.payload
     },
-    decremented: state => {
-
+    addgroupdata:(state,actions)=>{
+      state.groupdetailes=actions.payload
     }
+
   }
 })
 
-export const { incremented, decremented } = counterSlice.actions
+export const { addMembers,addgroupdata } = counterSlice.actions
+export default counterSlice.reducer
