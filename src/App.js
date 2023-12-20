@@ -1,7 +1,8 @@
 import './App.css';
 import AcceptbyAdmin from './group_create/user_list';
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import Store from './redux/store';
+import { Provider } from 'react-redux';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
 
 function App() {
   return(
+    <>
+    <Provider store={Store}>
     <RouterProvider router={router} />
+    </Provider>
+    </>
   )
 }
 
