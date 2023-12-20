@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userdetailReducer from './counterSlice'
+import userdetailReducer from './create_slice'
 
 const store=configureStore({
-  reducer: {userdetail:userdetailReducer},
+  reducer: {
+    userdetail:userdetailReducer
+  },
 })
 
 export default store;
