@@ -2,10 +2,12 @@ import React from "react";
 import axios from 'axios';
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './style.css'
 import emailjs from 'emailjs-com'
+import ContactUs from "./email";
 // import { useSelector,useDispatch } from "react-redux";
 
 
@@ -16,11 +18,12 @@ function UserIndividualDetailes() {
   //   axios.get("https://9e4a60c7-d991-48dc-a0a2-fba826b0bf94.mock.pstmn.io/groupdetailes")
   //     .then(res => dispatch(individualData(res.data)))
   // }, [])
+  const navigate=useNavigate()
   const razorpay=()=>{
     window.location="https://rzp.io/i/R7r95VQWB"
   }
   const emailSend=()=>{
-    
+   navigate("/email")
   }
   return (
     <>
