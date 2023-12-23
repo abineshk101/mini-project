@@ -1,0 +1,14 @@
+*{
+    padding: 0%;
+    margin: 0;
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+button{
+    line-height: 1%;
+    font-family: 'Courier New', Courier, monospace;
+}
+button:hover{
+    
+     box-shadow: 10px 10px lightblue;
+    /* z-index: 0.5; */
+}

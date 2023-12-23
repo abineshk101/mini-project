@@ -10,8 +10,9 @@ import ContactUs from './Detailes/email';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import UserIndividualDetailes from './Detailes/user_individual_detailes'
-import CreateGroup from './group_create/create_group';
-import Eachgroupdetailes from './Detailes/groupdetailes';
+import CreateGroup from './group_create/CreateGroup/create_group';
+import Adduser from './Detailes/adduser';
+import Eachgroupdetailes from './Detailes/GroupDetailes/groupdetailes';
 import React from 'react';
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path:"/creategroup",
     element:<CreateGroup />
+  },
+  {
+    path:"/adduser",
+    element:<Adduser />
   }
 ]);
 

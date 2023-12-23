@@ -6,15 +6,13 @@ const counterSlice = createSlice({
     membersList: [],
     groupdetailes:{
       groupname:"",
-      admin:{name:"",email:"",phone:0},
-      totalmonth:0,
+      adminid:2,
       deadline:0,
-      number_of_memeber:0,
-      totalamount:0,
+      totalmonth:0,
       amountpermonth:0
 
   },
-  separtegroupdata:[]
+  separtegroupdata:{}
   },
   reducers: {
     addMembers: (state,actions) => {
