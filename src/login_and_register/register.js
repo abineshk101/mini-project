@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import { useDispatch,useSelector } from "react-redux";
-import  getRegisterData  from "../redux/create_slice";
+import { getRegisterData } from "../redux/create_slice";
 import { useNavigate } from "react-router";
 function Register(){ 
 const registerDetails=useSelector((state)=>state.userdetail.registerData)
