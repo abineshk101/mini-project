@@ -1,11 +1,11 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Sample from './sample';
-import Login from './login_and_register/login';
 import { Provider } from 'react-redux';
-import Store from './store';
-import Register from './login_and_register/register';
+import store from './redux/store';
+import Login from './login_and_register/login/login'
 import Homepage from './login_and_register/homepage';
-import CreateGroup from './login_and_register/createGroup';
+import Register from './login_and_register/register';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -27,18 +27,26 @@ const router = createBrowserRouter([
     element:<Register/>
   },
   {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path:"/register",
+    element:<Register/>
+  },
+  {
     path:"/home",
     element:<Homepage/>
   },
-  {
-    path:"/user",
-    element:<CreateGroup/>
-  }
+  // {
+  //   path:"/user",
+  //   element:<CreateGroup/>
+  // }
 ]);
 
 function App() {
   return(
-    <Provider store={Store}>
+    <Provider store={store}>
     <React.StrictMode>
     <RouterProvider router={router} />
     </React.StrictMode>
