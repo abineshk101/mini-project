@@ -7,7 +7,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import UserIndividualDetailes from './Detailes/user_individual_detailes'
+import UserIndividualDetailes from './Detailes/individual/user_individual_detailes'
+import GroupDetailes from './Detailes/admin/admin_detail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path:"/",
     element:<UserIndividualDetailes/>
+  },
+  {
+    path:"/admin",
+    element:<GroupDetailes/>
   }
 ]);
 
