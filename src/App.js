@@ -11,6 +11,8 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import UserIndividualDetailes from './Detailes/user_individual_detailes'
 import React from 'react';
+import ShareGroupDetailes from './group_create/homepage/homepage_gro';
+
 const router = createBrowserRouter([
   {
    path:"/userlist",
@@ -24,6 +26,10 @@ const router = createBrowserRouter([
   {
     path:"/email",
     element:<ContactUs/>
+  },
+  {
+    path:"homepage",
+    element:<ShareGroupDetailes />
   }
 ]);
 
