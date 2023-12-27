@@ -17,8 +17,7 @@ function GroupDetailes()
     useEffect(() => {
         axios.get('https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1')
           .then(res => dispatch(adminData(res.data.data)))
-          
-      }, [])
+      },[])
     return(
         <>
         <div class="box">

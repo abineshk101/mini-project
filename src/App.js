@@ -1,5 +1,4 @@
 import './App.css';
-import AcceptbyAdmin from './group_create/user_list';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Store from './redux/store';
 import { Provider } from 'react-redux';
@@ -12,10 +11,7 @@ import GroupDetailes from './Detailes/admin/admin_detail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 const router = createBrowserRouter([
-  {
-   path:"/userlist",
-   element:<AcceptbyAdmin />
-  },
+  
   {
     path:"/user",
     element:<UserIndividualDetailes/>
