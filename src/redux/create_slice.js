@@ -12,7 +12,10 @@ const counterSlice = createSlice({
       amountpermonth:0
 
   },
-  separtegroupdata:{}
+  groupdata:{
+    members:[]
+  },
+  eachgroupdata:{}
   },
   reducers: {
     addMembers: (state,actions) => {
@@ -21,10 +24,12 @@ const counterSlice = createSlice({
     addgroupdata:(state,actions)=>{
       state.groupdetailes=actions.payload
     },
-    groupdata:(state,actions)=>{state.separtegroupdata=actions.payload}
+    groupdata:(state,actions)=>{state.groupdata.members=actions.payload},
+    eachgroupdata:(state,actions)=>{state.eachgroupdata=actions.payload}
+
 
   }
 })
 
-export const { addMembers,addgroupdata ,groupdata} = counterSlice.actions
+export const { addMembers,addgroupdata ,groupdata,eachgroupdata} = counterSlice.actions
 export default counterSlice.reducer
