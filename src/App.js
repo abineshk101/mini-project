@@ -17,7 +17,7 @@ const router = createBrowserRouter([
    element:<AcceptbyAdmin />
   },
   {
-    path:"/",
+    path:"/user",
     element:<UserIndividualDetailes/>
   },
   {

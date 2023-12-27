@@ -3,7 +3,9 @@ import { createSlice} from '@reduxjs/toolkit'
 export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
-    individual:[],
+    individual:[{
+      name:"",
+    }],
     admin:{
       members:[]
     },

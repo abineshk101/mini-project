@@ -23,6 +23,7 @@ function GroupDetailes()
         <>
         <div class="box">
         <h1 className="text-center text-dark">{admin.name}</h1>
+        <h5 className="text-center text-dark">Admin: {admin.admin_name}</h5>
         <Table striped bordered hover size="sm">
       <thead>
         <tr>
