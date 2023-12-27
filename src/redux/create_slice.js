@@ -4,7 +4,6 @@ export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
     individual:[{
-      name:"",
     }],
     admin:{
       members:[]
