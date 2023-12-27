@@ -1,7 +1,7 @@
 import './App.css';
-import AcceptbyAdmin from './group_create/user_list';
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import Login from './login_and_register/login/login'
+import Register from './login_and_register/register';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -15,10 +15,6 @@ import ShareGroupDetailes from './group_create/homepage/homepage_gro';
 
 const router = createBrowserRouter([
   {
-   path:"/userlist",
-   element:<AcceptbyAdmin />
-  },
-  {
     path:"/",
     element:<UserIndividualDetailes/>
   },
@@ -28,9 +24,17 @@ const router = createBrowserRouter([
     element:<ContactUs/>
   },
   {
-    path:"homepage",
+    path:"/homepage",
     element:<ShareGroupDetailes />
-  }
+  },
+  {
+    path:"/login",
+    element:<Login />
+  },
+  {
+    path:"/register",
+    element:<Register />
+  },
 ]);
 
 function App() {
