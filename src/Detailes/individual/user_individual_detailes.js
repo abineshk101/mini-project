@@ -10,7 +10,6 @@ import { useParams } from "react-router";
 function UserIndividualDetailes() {
   const individual=useSelector((state)=>state.userdetail.individual)
   const status=useSelector((state)=>state.userdetail.status)
-  const {userId}=useParams()
   console.log(individual)
   const dispatch=useDispatch()
   useEffect(() => {
@@ -40,11 +39,11 @@ function UserIndividualDetailes() {
             <h3>{indi.name}</h3>
             <h3>{indi.email}</h3>
             <h3>{indi.phone}</h3>
+            <h3>1000</h3>
+            Payment Status: {status?<span class="button">Paid</span>:<span>Pending</span>}<br/>
             </>:""}
             </>
           )}
-          <h3>1000</h3>
-          Payment Status: {status?<span class="button">Paid</span>:<span>Pending</span>}<br/>
           <button onClick={()=>razorPay()}>Pay</button>
           </>
           
