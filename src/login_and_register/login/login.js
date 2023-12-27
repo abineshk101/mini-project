@@ -3,7 +3,7 @@ import './login.css'
 import axios from 'axios'; 
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getLoginData } from "../../redux/create_slice";
+import { getLoginData, getloginUser } from "../../redux/create_slice";
 import {useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,8 +17,9 @@ const navigate=useNavigate()
 useEffect(()=>{
     if(localStorage.getItem("Auth-token")){
        navigate('/home')
-    }
-})
+    
+}
+},[])
 
 
 const checkLogin=()=>{
@@ -30,15 +31,11 @@ const checkLogin=()=>{
       console.log(res)
         let checkLog=res.data.status
       if(checkLog==='success'){
-        localStorage.setItem('Auth-token',true)
-        console.log(res)
+        console.log(res.data.data)
         dispatch(getLoginData(''))
-        // navigate('/home')
-        // localStorage.setItem("login","success")
-        // navigate("/home")
-        // if(localStorage.getItem("guest")){
-        //     localStorage.removeItem("guest")
-        //     navigate(`/users/${getuserIdData}`)
+        dispatch(getloginUser(res.data.data))
+        navigate('/homepage')
+        localStorage.setItem("login","success")
         }
       else{
         alert("enter the valid input")

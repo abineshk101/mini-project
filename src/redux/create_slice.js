@@ -19,7 +19,7 @@ const counterSlice = createSlice({
                 password:""},
   loginData:{email:"",
             password:""},
-  homeData:[],   
+  loginUserDetails:{}
   },
   reducers: {
     addMembers: (state,actions) => {
@@ -34,12 +34,13 @@ const counterSlice = createSlice({
     getLoginData:(state,action)=>{
       state.loginData=action.payload
     },
-    getHomeData:(state,action)=>{
-        state.homeData=action.payload
+    getloginUser:(state,action)=>{
+        state.loginUserDetails=action.payload
       },
+      
 
   }
 })
 
-export const { addMembers,addgroupdata,getRegisterData,getLoginData,getHomeData } = counterSlice.actions
+export const { addMembers,addgroupdata,getRegisterData,getLoginData,getloginUser } = counterSlice.actions
 export default counterSlice.reducer
