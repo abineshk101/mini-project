@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/esm/Button';
 import Table from 'react-bootstrap/esm/Table';
 import ListGroup from 'react-bootstrap/ListGroup';
 import moment from 'moment';
+import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch,useSelector } from 'react-redux';
@@ -41,17 +42,18 @@ const checkloginuser=(id)=>{
     {
     if(id==1)
     {
-        navigate('/user')
+        navigate(`/user/${1}`)
     }
     else
     {
-        navigate('/groupdetailes')
+        navigate('/groupdetails')
      }
 }
 }
-const adminpage=()=>
+const adminpage=(admin_id)=>
 {
-    navigate('/admin')
+    navigate(`/admin/${admin_id}`)
+    alert(admin_id)
 }
 let deadlinedateformat =moment().format(`${deadline} MMMM YYYY`)
 let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
@@ -63,7 +65,7 @@ let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
         {deadlinedateformat}
      <Table style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
            <h1>{separte_group_data.name}</h1>
-     <Button type='button' onClick={adminpage}>
+     <Button type='button' onClick={()=>adminpage(separte_group_data.admin_id)}>
          <Card><CardBody>
          <ListGroup variant="flush">
         <ListGroup.Item  style={{width:'18rem'}}>{separte_group_data.admin_id}</ListGroup.Item>
