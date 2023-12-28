@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import ContactUs from './Detailes/email';
+import ContactUs from './Detailes/email'
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import UserIndividualDetailes from './Detailes/user_individual_detailes'

@@ -1,5 +1,5 @@
 import React from 'react';
-import emailjs from 'emailjs-com';
+import emailjs from './user_individual_detailes'
 
 export default function ContactUs() {
 

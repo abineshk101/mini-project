@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './style.css'
-import emailjs from 'emailjs-com'
+// import emailjs from 'emailjs-com'
 // import { useSelector,useDispatch } from "react-redux";
 
 
