@@ -1,8 +1,11 @@
 import React from "react";
 import axios from 'axios';
 import { useDispatch,useSelector } from "react-redux";
-import { getRegisterData } from "../redux/create_slice";
+import { getRegisterData } from "../../redux/create_slice";
 import { useNavigate } from "react-router";
+import "./register.css"
+
+
 function Register(){ 
 const registerDetails=useSelector((state)=>state.userdetail.registerData)
 const dispatch=useDispatch()
@@ -24,10 +27,14 @@ const checkclientRegister = ()=>{
             }
     return(
         <>
-        <h1>Register</h1>
-        {/* {JSON.stringify(registerDetails)} */}
-        <form>
-            <label>name:</label><br/>
+    
+         <h1>Register</h1> 
+         {JSON.stringify(registerDetails)} 
+         <form> 
+       
+	
+	
+            /* <label>name:</label><br/>
             <input type="text" onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,name:e.target.value}))}}/><br/>
             <label>email:</label><br/>
             <input type="text" onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,email:e.target.value}))}}/><br/>
@@ -36,11 +43,12 @@ const checkclientRegister = ()=>{
             <label>password</label><br/>
             <input type="password" onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,password:e.target.value}))}}/><br/>
             <button type="button" onClick={()=>checkclientRegister()}>submit</button>
-            <button type="button" onClick={()=>checkclientLogin()}>login</button>
+            <button type="button" onClick={()=>checkclientLogin()}>login</button> 
 
-        </form>
+          </form>  
+         
         
         </>
     )
 }
-export default Register
+export default Register;

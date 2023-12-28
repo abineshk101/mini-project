@@ -53,29 +53,30 @@ const checkclientRegister=()=>{
 
     return(
         <>
-        <div className="containers">
+
+         <div className="containers">
         {JSON.stringify(getuserIdData)}
-        {/* {JSON.stringify(loginUserData)} */}
-        <div className="login">
-        <form action="">
-       <b><h1>Login</h1></b><br/>
-        <div className="input-box">
-        <label>Email:</label><br/>
-        <i class="fa-solid fa-user"></i>
+         {JSON.stringify(loginUserData)}
+       <div className="login">
+         <form action="">
+         <b><h1>Login</h1></b><br/>
+         <div className="input-box">
+         <label>Email:</label><br/>
+         <i class="fa-solid fa-user"></i>
         <input type="text" placeholder='email' onKeyUp={(e)=>{dispatch(getLoginData({...loginUserData,email:e.target.value}))}} ></input><br/>
-        </div>
-        <div className="input-box">
+        </div> 
+         <div className="input-box">
         <label>Password:</label><br/>
         <i class="fa-solid fa-key"></i>
         <input type="password" placeholder='password' onKeyUp={(e)=>{dispatch(getLoginData({...loginUserData,password:e.target.value}))}}></input><br/>
-        </div><br/>
+        </div><br/> 
         <Button type="button"  variant="primary" onClick={()=>checkLogin()}>Submit</Button><br/>
         <p>Don't have an account?</p>
         <Button type="button"  variant="success" onClick={()=>checkclientRegister()}>register</Button>
-        </form>  
-        </div>
-        </div>
-        
+        </form>   
+         </div>
+        </div> 
+         
         </>
     )
 }

@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Login from './login_and_register/login/login'
-import Register from './login_and_register/register';
+import Register from './login_and_register/Register/register';
 import {
   createBrowserRouter,
   RouterProvider,
