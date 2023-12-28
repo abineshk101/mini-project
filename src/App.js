@@ -15,7 +15,7 @@ import ShareGroupDetailes from './group_create/homepage/homepage_gro';
 
 const router = createBrowserRouter([
   {
-    path:"/",
+    path:"/individualdetail",
     element:<UserIndividualDetailes/>
   },
  
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     element:<ShareGroupDetailes />
   },
   {
-    path:"/login",
+    path:"/",
     element:<Login />
   },
   {
