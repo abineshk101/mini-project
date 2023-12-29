@@ -1,19 +1,24 @@
 import { createSlice} from '@reduxjs/toolkit'
 
-const counterSlice = createSlice({
+export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
-    value: 0
+    individual:[],
+    admin:[],
+    status:false
   },
   reducers: {
-    incremented: state => {
-
+    individualData: (state,action) => {
+      state.individual=action.payload
     },
-    decremented: state => {
-
-    }
+    adminData: (state,action) => {
+      state.admin=action.payload
+    },
+    statusData: (state,action) => {
+      state.status=action.payload
+    },
   }
 })
 
-export default counterSlice.reducer;
-export const { incremented, decremented } = counterSlice.actions
+export const { individualData,adminData,statusData } = CounterSlice.actions
+export default CounterSlice.reducer
