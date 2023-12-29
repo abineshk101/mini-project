@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-// import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Navbar from "./nabar/navbar";
 // import Container from 'react-bootstrap/Container';
@@ -64,8 +64,8 @@ function UserIndividualDetailes() {
         <Card.Text>
           Amount paid
         </Card.Text>
-        <button  onClick={()=>razorpay()}>Pay</button><br></br>
-        <button  onClick={()=>emailSend()}>emailSend</button>
+        <Button  onClick={()=>razorpay()}>Pay</Button><br></br>
+        <Button  onClick={()=>emailSend()}>emailSend</Button>
       </Card.Body>
     </Card>
     </div>
