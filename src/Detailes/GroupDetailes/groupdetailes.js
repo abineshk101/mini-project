@@ -61,7 +61,7 @@ let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
         <>
     
           <Button type='button' className='btn btn-dark' style={{float:'left'}} onClick={()=>{navigate("/homepage")}}> Go Back </Button> 
-     <h6 style={{float:'right'}}> <Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6><br/>
+     <h6 style={{float:'right'}}><Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6><br/>
         {deadlinedateformat}
      <Table style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
            <h1>{separte_group_data.name}</h1>
