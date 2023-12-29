@@ -1,9 +1,15 @@
 import { createSlice} from '@reduxjs/toolkit'
 
-const counterSlice = createSlice({
+export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
-    membersList: [],
+    emailsend:"",
+    individual:[{}],
+    admin:{
+          members:[]
+          },
+    status:false,
+  membersList: [],
     groupdetailes:{
       groupname:"",
       adminid:0,
@@ -16,17 +22,26 @@ const counterSlice = createSlice({
     members:[]
   },
   eachgroupdata:{},
-  registerData:{name:"",
-                email:"",
-                phone:"",
-                password:""},
   loginData:{email:"",
             password:""},
   loginUserDetails:{},
   groupnames:[],
+  registerData:{name:"",
+                email:"",
+                phone:"",
+                password:""},
   admingroup:[]
-  },
+},
   reducers: {
+    individualData: (state,action) => {
+      state.individual=action.payload
+    },
+    adminData: (state,action) => {
+      state.admin=action.payload
+    },
+    statusData: (state,action) => {
+      state.status=action.payload
+    },
     addMembers: (state,actions) => {
         state.membersList=actions.payload
     },
@@ -58,5 +73,7 @@ const counterSlice = createSlice({
 })
 
 
-export const { addMembers,addgroupdata,getRegisterData,getLoginData,getadmingroup,getloginUser,setadminid,getgroupname,groupdata,eachgroupdata } = counterSlice.actions
-export default counterSlice.reducer
+export const { addMembers,addgroupdata,getRegisterData,getLoginData,getloginUser,getgroupname,setadminid,getadmingroup ,individualData,adminData,statusData,groupdata,eachgroupdata,sendEmails} = CounterSlice.actions
+export default CounterSlice.reducer
+
+

@@ -24,7 +24,6 @@ function ShareGroupDetailes()
 
     useEffect(()=>{
         filteredList()
-        admingrouplist()
     },[])
     function groupnav(id){
         navigate(`/groupdetails/${id}`)

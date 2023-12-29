@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/esm/Button';
 import Table from 'react-bootstrap/esm/Table';
 import ListGroup from 'react-bootstrap/ListGroup';
-import moment from 'moment'; 
+import moment from "moment"
 import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
@@ -50,7 +50,7 @@ const checkloginuser=(id)=>{
     // {
     if(id==loginid)
     {
-        navigate(`/user/${loginid}`)
+        navigate(`/individualdetail/${groupid}`)
     }
     else
     {
@@ -60,8 +60,11 @@ const checkloginuser=(id)=>{
 }
 const adminpage=(admin_id)=>
 {
-    navigate(`/admin/${admin_id}`)
-    alert(admin_id)
+    if(admin_id==loginid)
+    {
+        navigate(`/admin/${groupid}`)
+        alert(admin_id)
+    }
 }
 function deadlinealert()
 {
@@ -76,10 +79,11 @@ function deadlinealert()
 }
     return(
         <>
-    
+        {loginid}
+        {separte_group_data.admin_id}
           <Button type='button' className='btn btn-dark' style={{float:'left'}} onClick={()=>{navigate("/homepage")}}> Go Back </Button> 
           <Button type='button'onClick={deadlinealert}>Deadlinealert</Button>
-     <h6 style={{float:'right'}}> <Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6><br/>
+   { loginid==separte_group_data.admin_id?<h6 style={{float:'right'}}> <Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6> :null}
         {deadlinedateformat}
         
         <></>
