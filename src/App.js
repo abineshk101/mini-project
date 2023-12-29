@@ -17,7 +17,7 @@ import Eachgroupdetailes from './Detailes/GroupDetailes/groupdetailes';
 
 const router = createBrowserRouter([
   {
-    path:"/",
+    path:"/individualdetail",
     element:<UserIndividualDetailes/>
   },
  
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     element:<ShareGroupDetailes />
   },
   {
-    path:"/login",
+    path:"/",
     element:<Login />
   },
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
     element:<CreateGroup />
   },
   {
-    path:"/groupdetails",
+    path:"/groupdetails/:groupid",
     element:<Eachgroupdetailes />
   }
 ]);
