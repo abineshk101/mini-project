@@ -5,6 +5,8 @@ import Table from 'react-bootstrap/Table';
 import { adminData } from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
 import './style1.css'
+import Badge from 'react-bootstrap/Badge';
+import { useParams } from "react-router";
 
 
 function GroupDetailes()
@@ -13,9 +15,10 @@ function GroupDetailes()
     const status=useSelector((state)=>state.userdetail.status)
     console.log(admin.members)
     const dispatch=useDispatch()
-    
+    // const {groupid}=useParams()
+  
     useEffect(() => {
-        axios.get('https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1')
+        axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1`)
           .then(res => dispatch(adminData(res.data.data)))
       },[])
     return(
@@ -28,7 +31,7 @@ function GroupDetailes()
         <tr>
           <th>S.NO</th>
           <th>USER NAME</th>
-          <th>Phone Number</th>
+          <th>PHONE NUMBER</th>
           <th>AMOUNT</th>
           <th>STATUS</th>
         </tr>
@@ -42,7 +45,7 @@ function GroupDetailes()
           <td>{adm.name}</td>
           <td>{adm.phone}</td>
           <td>1000</td>
-          <td>{status?<button>Paid</button>:<button>Pending</button>}</td>
+          <td>{status?<Badge bg="success">Paid</Badge>:<Badge bg="danger">Pending</Badge>}</td>
         </tr>)
             })
         }

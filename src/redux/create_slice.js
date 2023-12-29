@@ -3,6 +3,7 @@ import { createSlice} from '@reduxjs/toolkit'
 export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
+    emailsend:"",
     individual:[{}],
     admin:{
           members:[]
@@ -11,19 +12,29 @@ export const CounterSlice = createSlice({
   membersList: [],
     groupdetailes:{
       groupname:"",
-      admin:{name:"",email:"",phone:0},
-      totalmonth:0,
+      adminid:0,
       deadline:0,
-      number_of_memeber:0,
-      totalamount:0,
-      amountpermonth:0,
+      totalmonth:0,
+      amountpermonth:0
+
   },
+  groupdata:{
+    members:[]
+  },
+  eachgroupdata:{},
   registerData:{name:"",
                 email:"",
                 phone:"",
                 password:""},
   loginData:{email:"",
             password:""},
+  loginUserDetails:{},
+  groupnames:[],
+  registerData:{name:"",
+                email:"",
+                phone:"",
+                password:""},
+  
   loginUserDetails:{},
   groupnames:[]
 },
@@ -55,9 +66,22 @@ export const CounterSlice = createSlice({
   getloginUser:(state,action)=>{
       state.loginUserDetails=action.payload
     },
+    sendEmails:(state,action)=>{
+      state.emailsend=action.payload
+    },
     
+    groupdata:(state,actions)=>{state.groupdata.members=actions.payload},
+    eachgroupdata:(state,actions)=>{state.eachgroupdata=actions.payload},
+
+    
+    
+    
+      
+
   }
   })
 
-export const { addMembers,addgroupdata,getRegisterData,getLoginData,getloginUser,getgroupname ,individualData,adminData,statusData} = CounterSlice.actions
+export const { addMembers,addgroupdata,getRegisterData,getLoginData,getloginUser,getgroupname ,individualData,adminData,statusData,groupdata,eachgroupdata,sendEmails} = CounterSlice.actions
 export default CounterSlice.reducer
+
+

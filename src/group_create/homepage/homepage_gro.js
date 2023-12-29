@@ -10,7 +10,7 @@ function ShareGroupDetailes()
 {
     let navigate=useNavigate()
     let dispatch=useDispatch()
-    let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.user_id)
+    let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
     let groupname=useSelector((state)=>state.userdetail.groupnames)
 
     function filteredList(){
@@ -23,7 +23,11 @@ function ShareGroupDetailes()
     },[])
 
     function groupnav(){
-        // navigate("/groupdetails")
+        navigate("/groupdetails")
+    }
+    function creategroup()
+    {
+        navigate("/creategroup")
     }
 console.log(groupname)
     return(
@@ -34,14 +38,14 @@ console.log(groupname)
             return (<>
             <div>
                 <ul>
-                <li><Button type="button" variant="outline-dark" onClick={groupnav()}>{data.name}</Button></li>
+                <li><Button type="button" variant="outline-dark" onClick={groupnav}>{data.name}</Button></li>
                 </ul>
             </div>
                 </>
             )
         }
         )} 
-        <Button type="button" >Create Group</Button>
+        <Button type="button" onClick={creategroup} >Create Group</Button>
         <br/><br/>
         </>
     )

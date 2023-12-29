@@ -6,15 +6,14 @@ body {
     background: linear-gradient(90deg, #C7C5F4, #776BCC);
     height: 100vh;
     margin: 0;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     color: #ffffff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     font-style:normal;
-    /* Add a subtle shadow for a 3D effect */
 }
-button{
+.but{
     background-color: #672feb;
     border-radius: 40%;
     font-size:smaller;

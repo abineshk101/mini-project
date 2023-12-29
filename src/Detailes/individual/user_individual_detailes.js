@@ -6,10 +6,13 @@ import './style.css'
 import { individualData,statusData} from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
 import { useParams } from "react-router";
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router";
 
 function UserIndividualDetailes() {
   const individual=useSelector((state)=>state.userdetail.individual)
   const status=useSelector((state)=>state.userdetail.status)
+  const navigate=useNavigate()
   console.log(individual)
   const dispatch=useDispatch()
   useEffect(() => {
@@ -21,7 +24,9 @@ function UserIndividualDetailes() {
 
   const razorPay=()=>{
     dispatch(statusData(true))
+    // navigate("/admin")
     window.location="https://rzp.io/i/NvRczQQh"
+
   }
   
   return (
@@ -44,7 +49,7 @@ function UserIndividualDetailes() {
             </>:""}
             </>
           )}
-          <button onClick={()=>razorPay()}>Pay</button>
+          <Button variant="primary" onClick={()=>razorPay()}>Pay</Button>
           </>
           
       </Card.Body>
