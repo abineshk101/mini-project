@@ -22,9 +22,10 @@ let separte_group_data=useSelector(state=>state.userdetail.eachgroupdata)
 let deadline=useSelector((state)=>state.userdetail.eachgroupdata.deadline)
 const navigate=useNavigate()
 const dispatch=useDispatch()
+const {groupid}=useParams()
 const apidata=()=>
 {
-    axios.get('https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1').then(res=>
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`).then(res=>
     {
         console.log(res.data.data)
         dispatch(groupdata(res.data.data.members))

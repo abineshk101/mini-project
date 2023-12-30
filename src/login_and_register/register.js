@@ -17,10 +17,10 @@ const checkclientRegister = ()=>{
            axios.post('https://agaram.academy/api/shh/index.php?request=register_user',formdata).then(function(response){
                 dispatch(getRegisterData(registerDetails))
                 console.log(response)})
-                navigate("/login")
+                navigate("/")
             }
             const checkclientLogin=()=>{
-                navigate('/login')
+                navigate('/')
             }
     return(
         <>
