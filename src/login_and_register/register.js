@@ -36,6 +36,7 @@ const checkclientRegister = ()=>{
             <label>password</label><br/>
             <input type="password" onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,password:e.target.value}))}}/><br/>
             <button type="button" onClick={()=>checkclientRegister()}>submit</button>
+            <br/>
             <button type="button" onClick={()=>checkclientLogin()}>login</button>
 
         </form>

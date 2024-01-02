@@ -13,6 +13,9 @@ function ShareGroupDetailes()
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
     let groupname=useSelector((state)=>state.userdetail.user_groupnames)
     let show_admin_groupnames=useSelector((state)=>state.userdetail.admin_groupnames)
+    let loggedin_user=useSelector((state)=>state.userdetail.loginUserDetails.name)
+    let adminid=useSelector((state)=>state.userdetail.groupdetailes.adminid)
+
 
     function filteredList(){
         axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_groups&user_id=${loggedin_id}`).then(function(response){
@@ -25,24 +28,30 @@ function ShareGroupDetailes()
     })
     }
     useEffect(()=>{
-        filteredList()
-        admin_groups()
+        if(localStorage.getItem('login')){
+            filteredList()
+            admin_groups()
+        }else{
+            navigate('/')
+        }
     },[])
     console.log(groupname)
     console.log(show_admin_groupnames)
+    
     function groupnav(id){
         navigate(`/groupdetails/${id}`)
     }
     function creategroup()
     {
         navigate("/creategroup")
+       
     }
   
 
 
     return(
         <>
-
+            {/* {JSON.stringify(admingroup)} */}
         <h2>Self Help Hub</h2>
         {groupname?<h2>Users Groups</h2>:null}
         {groupname?

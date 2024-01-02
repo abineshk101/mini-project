@@ -15,12 +15,16 @@ function GroupDetailes()
     const status=useSelector((state)=>state.userdetail.status)
     console.log(admin)
     const dispatch=useDispatch()
-    // const {groupid}=useParams()
+    const {groupid}=useParams()
   
     useEffect(() => {
-        axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1`)
-          .then(res => dispatch(adminData(res.data.data)))
+      adminEach()
       },[])
+
+    function adminEach(){
+      axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
+          .then(res => dispatch(adminData(res.data.data)))
+    }
     return(
         <>
         <div class="box">

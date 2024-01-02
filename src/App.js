@@ -21,11 +21,15 @@ import Payment from './Detailes/individual/payment';
 const router = createBrowserRouter([
   
   {
-    path:"/individualdetail",
+    path:"/individualdetail/:groupid",
     element:<UserIndividualDetailes/>
   },
   {
-    path:"/admin",
+    path:"/individualdetail/:groupid&/:token",
+    element:<UserIndividualDetailes/>
+  },
+  {
+    path:"/admin/:groupid",
     element:<GroupDetailes/>
   },
     
