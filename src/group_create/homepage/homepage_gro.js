@@ -14,7 +14,7 @@ function ShareGroupDetailes()
     let groupname=useSelector((state)=>state.userdetail.groupnames)
 
     function filteredList(){
-        axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_groups&user_id=${loggedin_id}`).then(function(response){
+        axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_groups&user_id=1`).then(function(response){
         dispatch(getgroupname(response.data.data))
     })}
 
@@ -23,7 +23,11 @@ function ShareGroupDetailes()
     },[])
 
     function groupnav(){
-        // navigate("/groupdetails")
+        navigate("/groupdetails")
+    }
+    function creategroup()
+    {
+        navigate("/creategroup")
     }
 console.log(groupname)
     return(
@@ -34,14 +38,14 @@ console.log(groupname)
             return (<>
             <div>
                 <ul>
-                <li><Button type="button" variant="outline-dark" onClick={groupnav()}>{data.name}</Button></li>
+                <li><Button type="button" variant="outline-dark" onClick={groupnav}>{data.name}</Button></li>
                 </ul>
             </div>
                 </>
             )
         }
         )} 
-        <Button type="button" >Create Group</Button>
+        <Button type="button" onClick={creategroup} >Create Group</Button>
         <br/><br/>
         </>
     )

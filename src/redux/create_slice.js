@@ -6,17 +6,21 @@ const counterSlice = createSlice({
     membersList: [],
     groupdetailes:{
       groupname:"",
-      admin:{name:"",email:"",phone:0},
-      totalmonth:0,
+      adminid:2,
       deadline:0,
-      number_of_memeber:0,
-      totalamount:0,
-      amountpermonth:0,
+      totalmonth:0,
+      amountpermonth:0
+
   },
+  groupdata:{
+    members:[]
+  },
+  eachgroupdata:{},
   registerData:{name:"",
                 email:"",
+                password:"",
                 phone:"",
-                password:""},
+                aadhar:""},
   loginData:{email:"",
             password:""},
   loginUserDetails:{},
@@ -29,6 +33,9 @@ const counterSlice = createSlice({
     addgroupdata:(state,actions)=>{
       state.groupdetailes=actions.payload
     },
+    groupdata:(state,actions)=>{state.groupdata.members=actions.payload},
+    eachgroupdata:(state,actions)=>{state.eachgroupdata=actions.payload},
+
     getgroupname:(state,actions)=>{
       state.groupnames=actions.payload
     },
@@ -46,5 +53,6 @@ const counterSlice = createSlice({
   }
 })
 
-export const { addMembers,addgroupdata,getRegisterData,getLoginData,getloginUser,getgroupname } = counterSlice.actions
+
+export const { addMembers,addgroupdata,getRegisterData,getLoginData,getloginUser,getgroupname,groupdata,eachgroupdata } = counterSlice.actions
 export default counterSlice.reducer
