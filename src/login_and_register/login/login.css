@@ -18,6 +18,13 @@
       transform: translate(-50%,-50%);
       
 }
-i{
+.login i{
     margin-right: 10px;
+    color: black;
+}
+.login h1{
+    color: black;
+}
+.login label{
+    color: black;
 }
