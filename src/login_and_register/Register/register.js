@@ -5,8 +5,7 @@ import { getRegisterData } from "../../redux/create_slice";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import "./register.css"
-import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Register(){ 
 const registerDetails=useSelector((state)=>state.userdetail.registerData)
@@ -21,7 +20,7 @@ const navigate=useNavigate()
      formdata.append("email",registerDetails.email)
      formdata.append("password",registerDetails.password)
      formdata.append("phone",registerDetails.phone)
-     formdata.append("aadhar",registerDetails.password)
+     formdata.append("aadhar",registerDetails.aadhar)
             axios.post('https://agaram.academy/api/shh/index.php?request=register_user',formdata).then(function(response){
                  dispatch(getRegisterData(registerDetails))
                  console.log(response)
