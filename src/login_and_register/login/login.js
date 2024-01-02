@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getLoginData, getloginUser } from "../../redux/create_slice";
-import {useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -14,12 +13,6 @@ function Login(){
     // console.log(getuserIdData)
        const dispatch=useDispatch()                                 
 const navigate=useNavigate()
-useEffect(()=>{
-    if(localStorage.getItem("Auth-token")){
-       navigate('/homepage')
-    
-}
-},[])
 
 
 const checkLogin=()=>{
