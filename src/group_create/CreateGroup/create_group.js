@@ -56,7 +56,7 @@ function CreateGroup()
   <input type="number" class="form-control" id="input" placeholder="amount per month"  onKeyUp={(e)=>dispatch(addgroupdata({...group_detailes,amountpermonth:e.target.value}))}></input>
 </div>
 
-        <Button id="creategroupbutton" className="bn5" onClick={registergroupdata} > craete group</Button> <br/>
+        <Button id="creategroupbutton" className="bn5" onClick={()=>registergroupdata()} > craete group</Button> <br/>
      
         </div>
 </div>

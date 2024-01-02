@@ -2,11 +2,16 @@ import { useDispatch, useSelector } from "react-redux"
 import { payment } from "../../redux/create_slice"
 import axios from "axios"
 import Button from 'react-bootstrap/Button';
+import { useParams } from "react-router";
 
 function Payment() {
     const dispatch=useDispatch()
     const pay=useSelector((state)=>state.userdetail.payment)
+    let userid=useSelector((state)=>state.userdetail.loginUserDetails.id)
+    const {groupid}=useParams()
     let formdata= new FormData()
+        formdata.append("groupid",groupid)
+        formdata.append("userid",userid)
         formdata.append("amount",pay.amount)
         formdata.append("month",pay.month)
         console.log(pay.amount)
@@ -17,8 +22,8 @@ function Payment() {
         dispatch(payment({...pay,month:e.target.value}))
     }
     const stripe=()=>{
-        axios.get(`https://agaram.academy/api/shh/index.php?request=add_group_amount&{group_id:1,user_id:1,amount:1000,month:"JAN-23"}`).then(function(res){console.log(res)})
-         window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
+        axios.get(`https://agaram.academy/api/shh/index.php?request=add_group_amount`,formdata).then(function(res){console.log(res)})
+        window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
     }
     return (
         <>

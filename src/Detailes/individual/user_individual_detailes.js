@@ -26,7 +26,6 @@ function UserIndividualDetailes() {
   const razorPay=()=>{
     dispatch(statusData(true))
     navigate("/payment")
-    // window.location="https://rzp.io/i/NvRczQQh"
 
   }
   

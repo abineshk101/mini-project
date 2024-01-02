@@ -28,10 +28,10 @@ const checkLogin=()=>{
   formdata.append("password",loginUserData.password)
 
     axios.post(`https://agaram.academy/api/shh/index.php?request=login_user`,formdata).then(function(res){
-      console.log(res)
+      // console.log(res)
         let checkLog=res.data.status
       if(checkLog==='success'){
-        console.log(res.data.data)
+        // console.log(res.data.data)
         dispatch(getLoginData(''))
         dispatch(getloginUser(res.data.data))
         navigate('/homepage')

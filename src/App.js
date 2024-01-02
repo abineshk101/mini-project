@@ -51,10 +51,10 @@ const router = createBrowserRouter([
     element:<CreateGroup />
   },
   {
-    path:"/groupdetails",
+    path:"/groupdetails/:groupid",
     element:<Eachgroupdetailes />
   },{
-    path:"/payment",
+    path:"/payment/:groupid",
     element:<Payment />
   }
 ]);
