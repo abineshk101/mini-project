@@ -44,7 +44,7 @@ function GroupDetailes()
           <td>{i+1}</td>
           <td>{adm.name}</td>
           <td>{adm.phone}</td>
-          <td>1000</td>
+          <td>{admin.amount_per_month}</td>
           <td>{status?<Badge bg="success">Paid</Badge>:<Badge bg="danger">Pending</Badge>}</td>
         </tr>)
             })

@@ -5,13 +5,13 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSelector,useDispatch } from "react-redux";
 import { getgroupname,getadmingroup } from "../../redux/create_slice";
+import Navbar from "../../login_and_register/header/navbar";
 
 function ShareGroupDetailes()
 {
     let navigate=useNavigate()
     let dispatch=useDispatch()
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
-    let loggedin_user=useSelector((state)=>state.userdetail.loginUserDetails.name)
     let groupname=useSelector((state)=>state.userdetail.groupnames)
     let adminid=useSelector((state)=>state.userdetail.groupdetailes.adminid)
     let admingroup=useSelector((state)=>state.userdetail.admingroup)
@@ -23,24 +23,23 @@ function ShareGroupDetailes()
     })}
 
     useEffect(()=>{
+        
         filteredList()
+        
     },[])
     function groupnav(id){
         navigate(`/groupdetails/${id}`)
     }
     function creategroup()
     {
-        navigate("/creategroup")
-       
+        navigate("/creategroup")       
     }
 console.log(groupname)
     return(
         <>
-            {/* {JSON.stringify(admingroup)} */}
+        <Navbar />
         <h2>Self Help Hub</h2>
-        {loggedin_user}
-        {loggedin_id}
-        {adminid}
+        
         {groupname.map((data)=>{
             return (<>
             <div>

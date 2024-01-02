@@ -4,7 +4,7 @@ export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
     emailsend:"",
-    individual:[{}],
+    individual:{members:[]},
     admin:{
           members:[]
           },

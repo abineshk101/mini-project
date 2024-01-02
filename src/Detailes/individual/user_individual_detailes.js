@@ -19,7 +19,7 @@ function UserIndividualDetailes() {
   const dispatch=useDispatch()
   useEffect(() => {
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
-      .then(res => dispatch(individualData(res.data.data.members
+      .then(res => dispatch(individualData(res.data.data
         )))
   }, [])
  
@@ -40,14 +40,14 @@ function UserIndividualDetailes() {
       <Card.Body class="body">
         
           <>
-          {individual.map((indi)=>
+          {individual.members.map((indi)=>
             <>
             
             {indi.id==loginid?<>
             <h3>{indi.name}</h3>
             <h3>{indi.email}</h3>
             <h3>{indi.phone}</h3>
-            <h3></h3>
+            <h3>{individual.amount_per_month}</h3>
             Payment Status: {status?<span class="button">Paid</span>:<span>Pending</span>}<br/>
             </>:""}
             </>
