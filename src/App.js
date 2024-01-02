@@ -6,12 +6,14 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import ContactUs from './Detailes/email'
+import ContactUs from './Detailes/email';
+import CreateGroup from './group_create/CreateGroup/create_group';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import UserIndividualDetailes from './Detailes/user_individual_detailes'
 import React from 'react';
 import ShareGroupDetailes from './group_create/homepage/homepage_gro';
+import Eachgroupdetailes from './Detailes/GroupDetailes/groupdetailes';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
     path:"/register",
     element:<Register />
   },
+  {
+    path:"/creategroup",
+    element:<CreateGroup />
+  },
+  {
+    path:"/groupdetails/:groupid",
+    element:<Eachgroupdetailes />
+  }
 ]);
 
 function App() {
