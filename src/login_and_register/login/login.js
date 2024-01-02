@@ -3,9 +3,7 @@ import './login.css'
 import axios from 'axios'; 
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { eachgroupdata, getLoginData, getloginUser,sendEmails } from "../../redux/create_slice";
-import {useEffect} from 'react';
-import { useParams } from "react-router-dom";
+import { getLoginData, getloginUser,sendEmails } from "../../redux/create_slice";
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
@@ -33,7 +31,7 @@ const checkLogin=()=>{
   formdata.append("email",loginUserData.email)
   formdata.append("password",loginUserData.password)
     axios.post(`https://agaram.academy/api/shh/index.php?request=login_user`,formdata).then(function(res){
-      console.log(res)
+      // console.log(res)
         let checkLog=res.data.status
       if(checkLog==='success'){
         console.log(res.data.data)
