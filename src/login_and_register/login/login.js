@@ -12,8 +12,8 @@ function Login(){
     const loginUserData=useSelector((state)=>state.userdetail.loginData)
     const getuserIdData=useSelector((state)=>state.userdetail.getId)
     console.log(getuserIdData)
-       const dispatch=useDispatch()                                 
-const navigate=useNavigate()
+        const dispatch=useDispatch()                                 
+        const navigate=useNavigate()
 useEffect(()=>{
     if(localStorage.getItem("Auth-token")){
        navigate('/homepage')

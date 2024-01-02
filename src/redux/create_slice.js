@@ -30,6 +30,10 @@ export const CounterSlice = createSlice({
       phone: "",
       password: ""
     },
+    payment:{
+      amount:"",
+      month:""
+    },
     loginData: {
       email: "",
       password: ""
@@ -83,10 +87,13 @@ export const CounterSlice = createSlice({
     eachgroupdata: (state, actions) => { 
       state.eachgroupdata = actions.payload 
     },
+    payment:(state,action)=>{
+      state.payment=action.payload
+    }
   }
 })
 
-export const { addMembers, addgroupdata, getRegisterData, getLoginData, getloginUser, getgroupname, individualData, adminData, statusData, groupdata, eachgroupdata, sendEmails } = CounterSlice.actions
+export const { addMembers, addgroupdata, getRegisterData, getLoginData, getloginUser, getgroupname, individualData, adminData, statusData, groupdata, eachgroupdata, sendEmails,payment } = CounterSlice.actions
 export default CounterSlice.reducer
 
 

@@ -9,11 +9,12 @@ import { useParams } from "react-router";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router";
 
+
 function UserIndividualDetailes() {
   const individual=useSelector((state)=>state.userdetail.individual)
   const status=useSelector((state)=>state.userdetail.status)
   const navigate=useNavigate()
-  console.log(individual.members)
+  console.log(individual)
   const dispatch=useDispatch()
   useEffect(() => {
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1`)
@@ -24,8 +25,8 @@ function UserIndividualDetailes() {
 
   const razorPay=()=>{
     dispatch(statusData(true))
-    // navigate("/admin")
-    window.location="https://rzp.io/i/NvRczQQh"
+    navigate("/payment")
+    // window.location="https://rzp.io/i/NvRczQQh"
 
   }
   

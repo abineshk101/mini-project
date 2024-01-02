@@ -13,7 +13,7 @@ function GroupDetailes()
 {
     const admin=useSelector((state)=>state.userdetail.admin)
     const status=useSelector((state)=>state.userdetail.status)
-    console.log(admin.amount_per_month)
+    console.log(admin)
     const dispatch=useDispatch()
     // const {groupid}=useParams()
   
