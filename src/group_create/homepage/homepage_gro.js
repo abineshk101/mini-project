@@ -31,6 +31,8 @@ function ShareGroupDetailes()
         if(localStorage.getItem('login')){
             filteredList()
             admin_groups()
+        }else{
+            navigate('/')
         }
     },[])
     console.log(groupname)
