@@ -14,7 +14,7 @@ const navigate=useNavigate()
 
 
  const checkclientRegister = ()=>{
-    alert("done")
+    // alert("done")
      let formdata= new FormData()
      formdata.append("name",registerDetails.name)
      formdata.append("email",registerDetails.email)
@@ -23,9 +23,9 @@ const navigate=useNavigate()
      formdata.append("aadhar",registerDetails.aadhar)
             axios.post('https://agaram.academy/api/shh/index.php?request=register_user',formdata).then(function(response){
                  dispatch(getRegisterData(registerDetails))
-                 console.log(response)
-                  navigate("/")
-                })
+                 console.log(response)})
+                  navigate('/')
+                
              
             }    
     const checkclientLogin=()=>{
@@ -35,7 +35,7 @@ const navigate=useNavigate()
         <>
     
          
-         <form onSubmit={checkclientRegister}> 
+         <form onSubmit={()=>checkclientRegister()}> 
         
          <h1>Register</h1> 
          {JSON.stringify(registerDetails)}<br/>

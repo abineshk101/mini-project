@@ -4,13 +4,13 @@ import Button from 'react-bootstrap/esm/Button';
 import Table from 'react-bootstrap/esm/Table';
 import ListGroup from 'react-bootstrap/ListGroup';
 import moment from "moment"
-import { useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch,useSelector } from 'react-redux';
 import {groupdata,eachgroupdata} from '../../redux/create_slice';
 import "./groupdetailes.css"
 import { CardBody } from 'react-bootstrap';
+import { useParams } from 'react-router';
 function  Eachgroupdetailes()
 {
     useEffect(
