@@ -14,17 +14,25 @@ import { CardBody } from 'react-bootstrap';
 function  Eachgroupdetailes()
 {
     useEffect(
-
         ()=>{apidata()},[]
-    )
+        )
+let loginid=useSelector((state)=>state.userdetail.loginUserDetails.id)
 let separte_group_members=useSelector(state=>state.userdetail.groupdata.members)
 let separte_group_data=useSelector(state=>state.userdetail.eachgroupdata)
+let group_id=useSelector(state=>state.userdetail.eachgroupdata.id)
 let deadline=useSelector((state)=>state.userdetail.eachgroupdata.deadline)
+let adminid=useSelector((state)=>state.userdetail.groupdetailes.adminid)
+let deadlinedateformat =moment().format(`${deadline} MMMM YYYY`);
+let currentdate=moment().format(`DD MMMM YYYY`)
+let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
+// let deadlinedate=JSON.parse(deadline);
+// let a=deadlinedate+1;
+const {groupid}= useParams()
 const navigate=useNavigate()
 const dispatch=useDispatch()
 const apidata=()=>
 {
-    axios.get('https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1').then(res=>
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`).then(res=>
     {
         console.log(res.data.data)
         dispatch(groupdata(res.data.data.members))
@@ -38,31 +46,47 @@ const apidata=()=>
 
 const checkloginuser=(id)=>{
   
-    for(let i=0;i<separte_group_data.members.length;i++)
+    // for(let i=0;i<separte_group_data.members.length;i++)
+    // {
+    if(id==loginid)
     {
-    if(id==1)
-    {
-        navigate(`/user/${1}`)
+        navigate(`/individualdetail/${groupid}`)
     }
     else
     {
-        navigate('/groupdetails')
+        navigate(`/groupdetails/${groupid}`)
      }
-}
+// }
 }
 const adminpage=(admin_id)=>
 {
-    navigate(`/admin/${admin_id}`)
-    alert(admin_id)
+    if(admin_id==loginid)
+    {
+        navigate(`/admin/${groupid}`)
+        alert(admin_id)
+    }
 }
-let deadlinedateformat =moment().format(`${deadline} MMMM YYYY`)
-let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
+function deadlinealert()
+{
+    if(currentdate==deadlinedateformat)
+    {
+        alert(1)
+    }
+    else
+    {
+        alert(2)
+    }
+}
     return(
         <>
-    
+        {loginid}
+        {separte_group_data.admin_id}
           <Button type='button' className='btn btn-dark' style={{float:'left'}} onClick={()=>{navigate("/homepage")}}> Go Back </Button> 
-     <h6 style={{float:'right'}}> <Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6><br/>
+          <Button type='button'onClick={deadlinealert}>Deadlinealert</Button>
+   { loginid==separte_group_data.admin_id?<h6 style={{float:'right'}}> <Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6> :null}
         {deadlinedateformat}
+        
+        <></>
      <Table style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
            <h1>{separte_group_data.name}</h1>
      <Button type='button' onClick={()=>adminpage(separte_group_data.admin_id)}>

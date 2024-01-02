@@ -1,25 +1,33 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import store from './redux/store';
+import { Provider } from 'react-redux';
 import Login from './login_and_register/login/login'
 import Register from './login_and_register/Register/register';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import UserIndividualDetailes from './Detailes/individual/user_individual_detailes'
+import GroupDetailes from './Detailes/admin/admin_detail';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ContactUs from './Detailes/email';
-import CreateGroup from './group_create/CreateGroup/create_group';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import UserIndividualDetailes from './Detailes/user_individual_detailes'
 import React from 'react';
 import ShareGroupDetailes from './group_create/homepage/homepage_gro';
+import CreateGroup from './group_create/CreateGroup/create_group';
 import Eachgroupdetailes from './Detailes/GroupDetailes/groupdetailes';
 
 const router = createBrowserRouter([
+  
   {
-    path:"/individualdetail",
+    path:"/individualdetail/:groupid",
     element:<UserIndividualDetailes/>
   },
+  {
+    path:"/admin/:groupid",
+    element:<GroupDetailes/>
+  },
+    
  
   {
     path:"/email",
@@ -42,7 +50,7 @@ const router = createBrowserRouter([
     element:<CreateGroup />
   },
   {
-    path:"/groupdetails",
+    path:"/groupdetails/:groupid",
     element:<Eachgroupdetailes />
   }
  

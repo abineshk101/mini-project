@@ -4,22 +4,15 @@ import axios from 'axios';
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getLoginData, getloginUser } from "../../redux/create_slice";
-import {useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login(){
     const loginUserData=useSelector((state)=>state.userdetail.loginData)
     const getuserIdData=useSelector((state)=>state.userdetail.getId)
-    console.log(getuserIdData)
+    // console.log(getuserIdData)
        const dispatch=useDispatch()                                 
 const navigate=useNavigate()
-useEffect(()=>{
-    if(localStorage.getItem("Auth-token")){
-       navigate('/homepage')
-    
-}
-},[])
 
 
 const checkLogin=()=>{
@@ -28,10 +21,10 @@ const checkLogin=()=>{
   formdata.append("password",loginUserData.password)
 
     axios.post(`https://agaram.academy/api/shh/index.php?request=login_user`,formdata).then(function(res){
-      console.log(res)
+      // console.log(res)
         let checkLog=res.data.status
       if(checkLog==='success'){
-        console.log(res.data.data)
+        // console.log(res.data.data)
         dispatch(getLoginData(''))
         dispatch(getloginUser(res.data.data))
         navigate('/homepage')
