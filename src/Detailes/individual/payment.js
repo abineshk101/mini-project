@@ -29,7 +29,7 @@ function Payment() {
     console.log(pay.month)
     console.log(formdata) 
         axios.post(`https://agaram.academy/api/shh/index.php?request=add_group_amount`,formdata).then(function(res){console.log(res)})
-        // window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
+        window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
     }
     return (
         <>

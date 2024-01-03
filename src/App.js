@@ -1,9 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import store from './redux/store';
-import { Provider } from 'react-redux';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { Provider,useSelector } from 'react-redux';
 import Login from './login_and_register/login/login'
-import Register from './login_and_register/register';
+import Register from './login_and_register/Register/register';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,10 +24,6 @@ const router = createBrowserRouter([
   
   {
     path:"/individualdetail/:groupid",
-    element:<UserIndividualDetailes/>
-  },
-  {
-    path:"/individualdetail/:groupid&/:token",
     element:<UserIndividualDetailes/>
   },
   {
@@ -61,9 +59,12 @@ const router = createBrowserRouter([
     path:"/payment/:groupid",
     element:<Payment />
   }
+ 
 ]);
 
+
 function App() {
+
   return(
     <Provider store={store} >
    
