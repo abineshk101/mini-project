@@ -4,29 +4,40 @@ import Button from 'react-bootstrap/Button';
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSelector,useDispatch } from "react-redux";
-import { getgroupname,getadmingroup } from "../../redux/create_slice";
+import { getgroupname,set_admin_groupname } from "../../redux/create_slice";
 import Navbar from "../../login_and_register/header/navbar";
-
 function ShareGroupDetailes()
 {
     let navigate=useNavigate()
     let dispatch=useDispatch()
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
-    let groupname=useSelector((state)=>state.userdetail.groupnames)
+    let groupname=useSelector((state)=>state.userdetail.user_groupnames)
+    let show_admin_groupnames=useSelector((state)=>state.userdetail.admin_groupnames)
+    let loggedin_user=useSelector((state)=>state.userdetail.loginUserDetails.name)
     let adminid=useSelector((state)=>state.userdetail.groupdetailes.adminid)
-    let admingroup=useSelector((state)=>state.userdetail.admingroup)
 
 
     function filteredList(){
         axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_groups&user_id=${loggedin_id}`).then(function(response){
         dispatch(getgroupname(response.data.data))
     })}
+    function admin_groups(){
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}`).then(function(res){
+        dispatch(set_admin_groupname(res.data.data))
 
+    })
+    }
     useEffect(()=>{
-        
-        filteredList()
-        
+        if(localStorage.getItem('login')){
+            filteredList()
+            admin_groups()
+        }else{
+            navigate('/')
+        }
     },[])
+    console.log(groupname)
+    console.log(show_admin_groupnames)
+    
     function groupnav(id){
         navigate(`/groupdetails/${id}`)
     }
@@ -34,13 +45,16 @@ function ShareGroupDetailes()
     {
         navigate("/creategroup")       
     }
-console.log(groupname)
+  
+
+
     return(
         <>
         <Navbar />
         <h2>Self Help Hub</h2>
-        
-        {groupname.map((data)=>{
+        {groupname?<h2>Users Groups</h2>:null}
+        {groupname?
+        groupname.map((data)=>{
             return (<>
             <div>
                 <ul>
@@ -50,9 +64,10 @@ console.log(groupname)
                 </>
             )
         }
-        )} 
-        <h1>Admin Group</h1>
-        {admingroup.map((data)=>{
+        ):null}
+        {show_admin_groupnames?<h2>Admin group</h2>:null}
+        {show_admin_groupnames? 
+        show_admin_groupnames.map((data)=>{
             return (<>
             <div>
                 <ul>
@@ -62,8 +77,9 @@ console.log(groupname)
                 </>
             )
         }
-        )}
-        <Button type="button" onClick={creategroup} >Create Group</Button>
+        ):null 
+        }
+        <Button type="button" onClick={()=>creategroup()} >Create Group</Button>
         <br/><br/>
         </>
     )

@@ -7,7 +7,8 @@ function Navbar(){
 
   const navigate=useNavigate()
   const logindata=useSelector(state=>state.userdetail.loginUserDetails)
-  console.log(logindata)
+  const groupcount=useSelector(state=>state.userdetail.user_groupnames)
+  const admingroupcount=useSelector(state=>state.userdetail.admin_groupnames)
 
   function Logout(){
         localStorage.removeItem('Auth-token')
@@ -40,7 +41,12 @@ function Navbar(){
       <li>
           <h4> Your Mail:{logindata.email}</h4>
       </li>
-     
+     <li>
+      {/* <h4>Group  as user:{groupcount.length}</h4> */}
+     </li>
+     <li>
+      <h4>Group  as admin:{admingroupcount.length}</h4>
+     </li>
     </ul>
     <ul>
       <li>
