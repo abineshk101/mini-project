@@ -23,7 +23,7 @@ function GroupDetailes() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { groupid } = useParams()
-let a=statusss.map((amt,j) =>
+let a=statusss.map((amt) =>
   amt.status
 )
 console.log(a)
