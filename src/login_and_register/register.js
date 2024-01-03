@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useDispatch,useSelector } from "react-redux";
 import { getRegisterData } from "../redux/create_slice";
 import { useNavigate } from "react-router";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 function Register(){ 
 const registerDetails=useSelector((state)=>state.userdetail.registerData)
 const dispatch=useDispatch()
@@ -35,9 +37,11 @@ const checkclientRegister = ()=>{
             <input type="number" onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,phone:e.target.value}))}}/><br/>
             <label>password</label><br/>
             <input type="password" onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,password:e.target.value}))}}/><br/>
-            <button type="button" onClick={()=>checkclientRegister()}>submit</button>
+            <Button type="button" onClick={()=>checkclientRegister()}>submit</Button>
             <br/>
-            <button type="button" onClick={()=>checkclientLogin()}>login</button>
+            <Link to='/'>Are you all ready register</Link>
+
+            {/* <button type="button" onClick={()=>checkclientLogin()}>login</button> */}
 
         </form>
         

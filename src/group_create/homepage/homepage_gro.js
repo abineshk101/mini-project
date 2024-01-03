@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
+import Navbar from "../../login_and_register/header/navbar";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSelector,useDispatch } from "react-redux";
@@ -45,15 +46,14 @@ function ShareGroupDetailes()
     }
     function creategroup()
     {
-        navigate("/creategroup")
-       
+        navigate("/creategroup")       
     }
   
 
 
     return(
         <>
-            {/* {JSON.stringify(admingroup)} */}
+        <Navbar />
         <h2>Self Help Hub</h2>
         {groupname?<h2>Users Groups</h2>:null}
         {groupname?
