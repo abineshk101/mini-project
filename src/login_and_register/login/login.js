@@ -29,6 +29,7 @@ const checkLogin=()=>{
         dispatch(getloginUser(res.data.data))
         navigate('/homepage')
         localStorage.setItem("login","success")
+        localStorage.setItem("token",res.data.token)
         }
       else{
         alert("enter the valid input")

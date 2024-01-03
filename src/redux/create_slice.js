@@ -32,7 +32,6 @@ export const CounterSlice = createSlice({
                 password:""},
   loginData:{email:"",
             password:""},
-  loginUserDetails:{},
   user_groupnames:[],
   admin_groupnames:[],
   admingroup:[]

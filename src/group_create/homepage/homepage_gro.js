@@ -7,7 +7,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { getgroupname,set_admin_groupname } from "../../redux/create_slice";
 
 function ShareGroupDetailes()
-{
+{  let token=localStorage.getItem("token")
     let navigate=useNavigate()
     let dispatch=useDispatch()
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
@@ -16,13 +16,15 @@ function ShareGroupDetailes()
     let loggedin_user=useSelector((state)=>state.userdetail.loginUserDetails.name)
     let adminid=useSelector((state)=>state.userdetail.groupdetailes.adminid)
 
+    
 
     function filteredList(){
-        axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_groups&user_id=${loggedin_id}`).then(function(response){
+        axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_groups&user_id=${loggedin_id}&token=${token}`).then(function(response){
+            console.log(response)
         dispatch(getgroupname(response.data.data))
     })}
     function admin_groups(){
-    axios.get(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}`).then(function(res){
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}&token=${token}`).then(function(res){
         dispatch(set_admin_groupname(res.data.data))
 
     })
@@ -84,5 +86,5 @@ function ShareGroupDetailes()
         <br/><br/>
         </>
     )
-}
+    }
 export default ShareGroupDetailes
