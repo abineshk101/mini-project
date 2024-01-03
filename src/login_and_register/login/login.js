@@ -7,6 +7,7 @@ import { getLoginData, getloginUser } from "../../redux/create_slice";
 import {useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Navbar } from "react-bootstrap";
 
 function Login(){
     const loginUserData=useSelector((state)=>state.userdetail.loginData)
@@ -52,7 +53,8 @@ const checkclientRegister=()=>{
             
 
     return(
-        <>
+        <>  
+        
         <div className="containers">
         {JSON.stringify(getuserIdData)}
         {/* {JSON.stringify(loginUserData)} */}
@@ -75,7 +77,6 @@ const checkclientRegister=()=>{
         </form>  
         </div>
         </div>
-        
         </>
     )
 }

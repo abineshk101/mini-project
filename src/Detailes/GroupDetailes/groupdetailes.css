@@ -12,3 +12,6 @@ button:hover{
      box-shadow: 10px 10px lightblue;
     /* z-index: 0.5; */
 }
+body{
+    height: 100vh;
+}
