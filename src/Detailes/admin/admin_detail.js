@@ -13,14 +13,18 @@ function GroupDetailes()
 {
     const admin=useSelector((state)=>state.userdetail.admin)
     const status=useSelector((state)=>state.userdetail.status)
-    console.log(admin.members)
+    console.log(admin)
     const dispatch=useDispatch()
-    // const {groupid}=useParams()
+    const {groupid}=useParams()
   
     useEffect(() => {
-        axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1`)
-          .then(res => dispatch(adminData(res.data.data)))
+      adminEach()
       },[])
+
+    function adminEach(){
+      axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
+          .then(res => dispatch(adminData(res.data.data)))
+    }
     return(
         <>
         <div class="box">
@@ -44,7 +48,7 @@ function GroupDetailes()
           <td>{i+1}</td>
           <td>{adm.name}</td>
           <td>{adm.phone}</td>
-          <td>1000</td>
+          <td>{admin.amount_per_month}</td>
           <td>{status?<Badge bg="success">Paid</Badge>:<Badge bg="danger">Pending</Badge>}</td>
         </tr>)
             })

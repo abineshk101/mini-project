@@ -4,35 +4,45 @@ import { useNavigate } from "react-router";
 import "./create_group.css";
 import React from "react";
 import axios from "axios";
-import { addgroupdata } from "../../redux/create_slice";
-import { useDispatch, useSelector } from "react-redux";
+import { addgroupdata,setadminid,getadmingroup } from "../../redux/create_slice";
+import { useDispatch,useSelector } from "react-redux";
 
 function CreateGroup() {
 
-  const group_detailes = useSelector(state => state.userdetail.groupdetailes)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  let formdata = new FormData()
-  formdata.append("name", group_detailes.groupname)
-  formdata.append("total_month", group_detailes.totalmonth)
-  formdata.append("amount_per_month", group_detailes.amountpermonth)
-  formdata.append("deadline", group_detailes.deadline)
-  formdata.append("admin_id", group_detailes.adminid)
+  const  group_detailes=useSelector(state=>state.userdetail.groupdetailes)
+  let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
 
-  const registergroupdata = () => {
-    axios.post(`https://agaram.academy/api/shh/index.php?request=create_group`, formdata).then(function (res) {
-      console.log(res)
-      if (res.data.status == "success") {
-        navigate("/homepage")
-      }
 
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+  dispatch(setadminid(loggedin_id))
+    let formdata=new FormData()
+      formdata.append("name",group_detailes.groupname)
+      formdata.append("total_month",group_detailes.totalmonth)
+      formdata.append("amount_per_month",group_detailes.amountpermonth)
+      formdata.append("deadline",group_detailes.deadline) 
+      formdata.append("admin_id",group_detailes.adminid)
+
+  const registergroupdata=()=>{
+    axios.post(`https://agaram.academy/api/shh/index.php?request=create_group`,formdata).then(function(res)
+    {
+      console.log(res)   
     })
-  }
-
-  return (
-
-    <>
-
+    axios.post(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}`).then
+    (
+        function(res)
+        {
+            console.log(res)
+            dispatch(getadmingroup(res.data.data))
+            navigate("/homepage")
+        }
+    )
+    }
+    
+    return(
+     
+        <>
+        
       <div id="content">
         <div id="container">
           <h4>Group Create</h4>
@@ -55,6 +65,8 @@ function CreateGroup() {
 
           <Button id="creategroupbutton" className="bn5" onClick={registergroupdata} > craete group</Button> <br />
 
+        <Button id="creategroupbutton" className="bn5" onClick={()=>registergroupdata()} > craete group</Button> <br/>
+     
         </div>
       </div>
 

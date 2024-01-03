@@ -17,10 +17,10 @@ const checkclientRegister = ()=>{
            axios.post('https://agaram.academy/api/shh/index.php?request=register_user',formdata).then(function(response){
                 dispatch(getRegisterData(registerDetails))
                 console.log(response)})
-                navigate("/login")
+                navigate("/")
             }
             const checkclientLogin=()=>{
-                navigate('/login')
+                navigate('/')
             }
     return(
         <>
@@ -36,6 +36,7 @@ const checkclientRegister = ()=>{
             <label>password</label><br/>
             <input type="password" onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,password:e.target.value}))}}/><br/>
             <button type="button" onClick={()=>checkclientRegister()}>submit</button>
+            <br/>
             <button type="button" onClick={()=>checkclientLogin()}>login</button>
 
         </form>

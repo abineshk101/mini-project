@@ -3,32 +3,57 @@ import axios from 'axios';
 import {useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import './style.css'
-import { individualData,statusData} from "../../redux/create_slice";
+import { individualData,statusData,updateAmount} from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
 // import { useParams } from "react-router";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router";
 // import { Navbar } from "react-bootstrap";
-import { useParams } from "react-router";
+import { useParams } from "react-router"
 import Navbar from "../nabar/navbar"
+
 
 function UserIndividualDetailes() {
   const individual=useSelector((state)=>state.userdetail.individual)
   const status=useSelector((state)=>state.userdetail.status)
+  const loginid=useSelector((state)=>state.userdetail.loginUserDetails.id)
+  const updateamount=useSelector((state)=>state.userdetail.updateamount)
+    console.log(updateamount)
+  
+
   const navigate=useNavigate()
   console.log(individual)
+  const {groupid}=useParams()
+  const {token}=useParams()
+  console.log(token)
   const dispatch=useDispatch()
-  const {paymentid}=useParams()
-
-  useEffect(() => { 
-    console.log(paymentid)
-    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=1`)
-      .then(res => dispatch(individualData(res.data.data.members)))
+  useEffect(() => {
+    individualEach()
+    razor()
   }, [])
+  function individualEach(){
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
+      .then(res => dispatch(individualData(res.data.data.members)))
+  }
+  function razor(){
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_payments&group_id=${groupid}&user_id=${loginid}`)
+      .then(function(res){dispatch(updateAmount(res.data.data))
+      
+      })
+  }
+  let b=updateamount.map((up)=>{
+   return(Number(up.amount))
+    })
+    
+    let number=0;
+    for (let n of b){
+      number=number+n
+    }
+    console.log(number)
+ 
   const razorPay=()=>{
     dispatch(statusData(true))
-    // navigate("/admin")
-    window.location="https://buy.stripe.com/test_7sIdSUdhleBica46or"
+    navigate(`/payment/${groupid}`)
   }
   const email=()=>{
     navigate("/email")
@@ -43,17 +68,16 @@ function UserIndividualDetailes() {
           <>
           {individual.map((indi)=>
             <>
-            {indi.id==2?<>
+            {indi.id==loginid?<>
             <h3>{indi.name}</h3>
             <h3>{indi.email}</h3>
             <h3>{indi.phone}</h3>
-            <h3>1000</h3>
+            <h3>{number}</h3>
             Payment Status: {status?<span class="button">Paid</span>:<span>Pending</span>}<br/>
             </>:""}
             </>
           )}
-          <Button variant="primary" onClick={()=>razorPay()}>Pay</Button><br></br>
-          <Button variant="primary" onClick={()=>email()}>Email</Button>
+          <Button variant="primary" onClick={()=>razorPay()}>Pay</Button>
           </>
     </Card.Body>
     </Card>
