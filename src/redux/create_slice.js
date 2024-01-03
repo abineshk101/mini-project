@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
+    statuss:[],
     emailsend: "",
     individual: [
       
@@ -72,6 +73,9 @@ export const CounterSlice = createSlice({
   updateamount:[]
   },
   reducers: {
+    statusshow:(state,action)=>{
+      state.statuss=action.payload
+    },
     updateAmount:(state,action)=>{
       state.updateamount=action.payload
     },
@@ -126,7 +130,7 @@ export const CounterSlice = createSlice({
 }
 })
 
-export const { updateAmount,addMembers, addgroupdata, getRegisterData, getLoginData, getloginUser, getgroupname, individualData, adminData, statusData, groupdata, eachgroupdata, sendEmails,payment,set_admin_groupname,getadmingroup,setadminid } = CounterSlice.actions
+export const { statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, getLoginData, getloginUser, getgroupname, individualData, adminData, statusData, groupdata, eachgroupdata, sendEmails,payment,set_admin_groupname,getadmingroup,setadminid } = CounterSlice.actions
 export default CounterSlice.reducer
 
 
