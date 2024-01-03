@@ -36,7 +36,7 @@ export const CounterSlice = createSlice({
   loginUserDetails:{},
   user_groupnames:[],
   admin_groupnames:[],
-  admingroup:[]
+  admingroup:[],
   },
   reducers: {
     individualData: (state,action) => {

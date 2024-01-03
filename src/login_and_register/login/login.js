@@ -19,7 +19,6 @@ function Login(){
 const navigate=useNavigate()
 
 const addUser=()=>{
-   
   axios.get(`https://agaram.academy/api/shh/index.php?request=add_group_member&group_id=${eachgroup.id}&user_id=${loginUserData.id}`).then(function(res){
   console.log(res)
   })
@@ -39,6 +38,7 @@ const checkLogin=()=>{
         dispatch(getLoginData(''))
         dispatch(getloginUser(res.data.data))
         localStorage.setItem("login","success")
+        localStorage.setItem("token",res.data.token)
      if(sendemail.mail){
       if(sendemail.mail===loginUserData.mail){
         addUser()
