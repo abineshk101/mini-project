@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Login(){
     const loginUserData=useSelector((state)=>state.userdetail.loginData)
+    console.log(loginUserData)
     const getuserIdData=useSelector((state)=>state.userdetail.getId)
     console.log(getuserIdData)
         const dispatch=useDispatch()                                 
@@ -34,6 +35,7 @@ const checkLogin=()=>{
       if(checkLog==='success'){
         // console.log(res.data.data)
         dispatch(getLoginData(''))
+        console.log(res.data)
         dispatch(getloginUser(res.data.data))
         console.log(res.data)
         navigate('/homepage')
