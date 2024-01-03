@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/esm/Button";
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from "react-router";
-import "./create_group.css";
 import React from "react";
 import axios from "axios";
 import { addgroupdata,setadminid,getadmingroup } from "../../redux/create_slice";

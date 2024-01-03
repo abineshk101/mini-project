@@ -10,7 +10,7 @@ function Navbar(){
   console.log(logindata)
 
   function Logout(){
-        localStorage.removeItem('Auth-token')
+        localStorage.removeItem('token')
         localStorage.removeItem('login')
         navigate('/')
 

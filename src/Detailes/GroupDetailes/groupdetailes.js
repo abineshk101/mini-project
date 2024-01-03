@@ -34,13 +34,13 @@ let afterdeadlinedateformat =moment().format(`${afterdeadlinedate} MMMM YYYY`);
 console.log(deadlinedateformat,afterdeadlinedateformat,typeof(afterdeadlinedateformat))
 let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
 let addmonth =moment().add(1, 'month').calendar()
-
+let token=localStorage.getItem("token")
 const {groupid}= useParams()
 const navigate=useNavigate()
 const dispatch=useDispatch()
 const apidata=()=>
 {
-    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`).then(res=>
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}&token=${token}`).then(res=>
     {
         console.log(res.data.data)
         dispatch(groupdata(res.data.data.members))

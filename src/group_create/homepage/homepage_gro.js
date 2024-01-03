@@ -8,7 +8,8 @@ import { useSelector,useDispatch } from "react-redux";
 import { getgroupname,set_admin_groupname } from "../../redux/create_slice";
 
 function ShareGroupDetailes()
-{  let token=localStorage.getItem("token")
+{  
+    let token=localStorage.getItem("token")
     let navigate=useNavigate()
     let dispatch=useDispatch()
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
