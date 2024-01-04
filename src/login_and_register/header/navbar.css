@@ -10,8 +10,8 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    background:#3c318d;
-    color: #cdcdcd;
+    background:black;
+    color: white;
     padding: 20px;
     z-index: 1;
     -webkit-user-select: none;
@@ -37,7 +37,7 @@ body {
   }
   
   .menu-container a:hover {
-    color: #5f4edb;
+    color:yellow;
   }
   
   .menu-container input {
@@ -59,7 +59,7 @@ body {
     height: 4px;
     margin-bottom: 5px;
     position: relative;
-    background: #cdcdcd;
+    background: black;
     border-radius: 3px;
     z-index: 1;
     transform-origin: 4px 0px;
@@ -126,7 +126,7 @@ body {
       top: 0;
       margin: -20px;
       padding: 75px 50px 50px;
-      background: #cdcdcd;
+      background: black;
       -webkit-font-smoothing: antialiased;
       /* to stop flickering of text in safari */
       transform-origin: 0% 0%;
@@ -146,7 +146,7 @@ body {
     }
   
     .menu-container a {
-      color: #cdcdcd;
+      color: white;
     }
   
     .menu-container input {

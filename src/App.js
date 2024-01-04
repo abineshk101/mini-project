@@ -18,6 +18,7 @@ import React from 'react';
 import ShareGroupDetailes from './group_create/homepage/homepage_gro';
 import CreateGroup from './group_create/CreateGroup/create_group';
 import Eachgroupdetailes from './Detailes/GroupDetailes/groupdetailes';
+import Payment from './Detailes/individual/payment';
 
 const router = createBrowserRouter([
   
@@ -29,14 +30,12 @@ const router = createBrowserRouter([
     path:"/admin/:groupid",
     element:<GroupDetailes/>
   },
-    
- 
   {
     path:"/email",
     element:<ContactUs/>
   },
   {
-    path:"/homepage",
+    path:"/homepage/:payment",
     element:<ShareGroupDetailes />
   },
   {
@@ -54,6 +53,9 @@ const router = createBrowserRouter([
   {
     path:"/groupdetails/:groupid",
     element:<Eachgroupdetailes />
+  },{
+    path:"/payment/:groupid",
+    element:<Payment />
   }
  
 ]);

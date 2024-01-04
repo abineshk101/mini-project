@@ -8,18 +8,27 @@ import {  useParams } from 'react-router';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch,useSelector } from 'react-redux';
-import {groupdata,eachgroupdata,loader} from '../../redux/create_slice';
+import {groupdata,eachgroupdata,loader,getloginUser} from '../../redux/create_slice';
 import "./groupdetailes.css"
 import { CardBody } from 'react-bootstrap';
 import Navbar from '../../login_and_register/header/navbar';
 function  Eachgroupdetailes()
 {
-    useEffect(
-        ()=>{apidata() 
-            adddateafterdeadline()
-        },[]
-        )
+
 let logindata=useSelector((state)=>state.userdetail.loginUserDetails)
+    useEffect(
+        ()=>{
+            if(localStorage.getItem('token')&&!logindata.id)
+            {
+                tokens()
+            }
+            else
+            {
+            apidata() 
+            adddateafterdeadline()
+            }
+        },[logindata.id]
+        )
 let separte_group_members=useSelector(state=>state.userdetail.groupdata.members)
 let separte_group_data=useSelector(state=>state.userdetail.eachgroupdata)
 let group_data=useSelector(state=>state.userdetail.eachgroupdata)
@@ -37,6 +46,25 @@ let token=localStorage.getItem("token")
 const {groupid}= useParams()
 const navigate=useNavigate()
 const dispatch=useDispatch()
+
+
+
+
+
+function tokens()
+{
+    axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
+    {
+        console.log(res)
+
+    dispatch(getloginUser(res.data.data))
+    console.log(logindata)
+    })
+}
+
+
+
+
 const apidata=()=>
 {
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}&token=${token}`).then(res=>
@@ -125,12 +153,9 @@ function adddateafterdeadline()
     return(
         <>
         <Navbar />
-          <Button type='button' className='btn btn-dark' style={{float:'left'}} onClick={goback}> Go Back </Button> 
-       {logindata.id==separte_group_data.admin_id?<Button type='button'onClick={deadlinealert}>Deadlinealert</Button>:<></> }
-       <br/>
-   { logindata.id==separte_group_data.admin_id?<h6 style={{float:'right', marginLeft:'1%'}}> <Button className='btn btn-dark' onClick={()=>group_delete()}>Delete Group</Button></h6> :<></>}
-
-   { logindata.id==separte_group_data.admin_id?<h6 style={{float:'right'}}> <Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6> :<></>}
+        { logindata.id==separte_group_data.admin_id? <Button type='button' className='btn btn-dark' onClick={deadlinealert}>Deadlinealert</Button>:<></>}
+        <br/>
+   { logindata.id==separte_group_data.admin_id?<h6 style={{float:'right'}}> <Button className='btn btn-dark' onClick={()=>navigate('/email')}>Add User</Button></h6> :<></>}
         <div style={{display:"inline-block"}}>
      
         <h6>your name :{logindata.name}</h6>

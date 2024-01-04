@@ -25,15 +25,17 @@ function Navbar(){
   <span></span>
   <span></span>
   <span></span>
-  <a href="#" class="menu-logo">
-    <img src="https://cdn5.vectorstock.com/i/1000x1000/68/89/team-or-friends-icon-digital-purple-vector-26326889.jpg" alt="My Awesome Website"/>
-  </a>
+
 
 
   <div class="menu">
     <ul>
-     
-    <button onClick={() => navigate(-1)}>Go back</button>
+    <li>
+        <Button variant="light" onClick={()=>navigate(-1)}>GoBack</Button>
+      </li>
+      <a href="#" class="menu-logo">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnNaYpGkQeyWDhzgvL0-LFQ9S-bVB0DDUlAg&usqp=CAU" alt="My Awesome Website"/>
+  </a>
       <li>
         <Link to='/homepage'>Home</Link>
       </li>
@@ -43,16 +45,16 @@ function Navbar(){
       <li>
           <h4> Your Mail:{logindata.email}</h4>
       </li>
-     <li>
+     {/* <li>
       <h4>Group  as user:{groupcount.length}</h4>
      </li>
      <li>
       <h4>Group  as admin:{admingroupcount.length}</h4>
-     </li>
+     </li> */}
     </ul>
     <ul>
       <li>
-        <Button onClick={Logout}>
+        <Button variant="light" onClick={Logout}>
           Log out
         </Button>
         

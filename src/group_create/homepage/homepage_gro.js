@@ -3,12 +3,13 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Navbar from "../../login_and_register/header/navbar";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useSelector,useDispatch } from "react-redux";
 import { getgroupname,set_admin_groupname } from "../../redux/create_slice";
 
 function ShareGroupDetailes()
 {  
+    let {payment}=useParams()
     let token=localStorage.getItem("token")
     let navigate=useNavigate()
     let dispatch=useDispatch()
@@ -54,6 +55,7 @@ function ShareGroupDetailes()
 
     return(
         <>
+
         <Navbar />
 
         <Button type="button" onClick={()=>creategroup()} style={{float:"right"}} >Create Group</Button>
@@ -64,7 +66,7 @@ function ShareGroupDetailes()
         groupname.map((data)=>{
             return (<>
             <div>
-                <ul >
+                <ul style={{listStyle:"none"}} >
                 <li><Button type="button" variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
                 </ul>
             </div>
@@ -77,7 +79,7 @@ function ShareGroupDetailes()
         show_admin_groupnames.map((data)=>{
             return (<>
             <div>
-                <ul>
+                <ul style={{listStyle:"none"}}>
                 <li><Button type="button" variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
                 </ul>
             </div>
@@ -86,10 +88,8 @@ function ShareGroupDetailes()
         }
         ):null 
         }
-        <Button type="button" onClick={()=>creategroup()} >Create Group</Button>
         <br/><br/>
         </div>
-
         </>
     )
     }

@@ -2,6 +2,7 @@ import React from "react";
 import './login.css'
 import axios from 'axios'; 
 import { useDispatch,useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getLoginData, getloginUser,sendEmails } from "../../redux/create_slice";
 import Button from 'react-bootstrap/Button';
@@ -10,13 +11,22 @@ import { Link } from "react-router-dom";
 
 function Login(){
     const loginUserData=useSelector((state)=>state.userdetail.loginData)
+    console.log(loginUserData)
     const getuserIdData=useSelector((state)=>state.userdetail.getId)
+    console.log(getuserIdData)
+        const dispatch=useDispatch()                                 
+        const navigate=useNavigate()
+useEffect(()=>{
+    if(localStorage.getItem("token")){
+       navigate('/homepage/:payment')
+    
+}
+},[])
     const sendemail=useSelector((state)=>state.userdetail.emailsend)
     const eachgroup=useSelector((state)=>state.userdetail.eachgroupdata)
     console.log(sendemail)
     console.log(getuserIdData)
-       const dispatch=useDispatch()                                 
-const navigate=useNavigate()
+       
 
 const addUser=()=>{
    
@@ -37,6 +47,7 @@ const checkLogin=()=>{
         console.log(res.data.data)
         console.log(checkLog)
         dispatch(getLoginData(''))
+        console.log(res.data)
         dispatch(getloginUser(res.data.data))
         localStorage.setItem("login","success")
         localStorage.setItem("token",res.data.token)
@@ -45,7 +56,7 @@ const checkLogin=()=>{
         addUser()
       }
      }
-        navigate('/homepage')
+        navigate('/homepage/:')
         }
       else{
         alert("enter the valid email or password")
@@ -57,15 +68,10 @@ const checkLogin=()=>{
 const checkclientRegister=()=>{
   navigate('/register')
 }
-  
-        
-            
-
     return(
         <>
-
-         <div className="containers">
-        {JSON.stringify(getuserIdData)}
+         <div>
+        {/* {JSON.stringify(getuserIdData)} */}
         <div className="login">
         <form action="">
        <b><h1>SIGN IN</h1></b><br/>
@@ -79,12 +85,11 @@ const checkclientRegister=()=>{
         <i class="fa-solid fa-key" ></i>
         <input type="password" placeholder='password' onKeyUp={(e)=>{dispatch(getLoginData({...loginUserData,password:e.target.value}))}}></input><br/>
         </div><br/>
-        <Button type="button"  variant="success" onClick={()=>checkLogin()}>Submit</Button><br/>
+        <Button type="button"  variant="dark" onClick={()=>checkLogin()}>Submit</Button><br/>
         <Link type="button"  variant="info" onClick={()=>checkclientRegister()}>Don't have an account?</Link> 
         </form>  
         </div>
         </div>
-        
         </>
     )
 }
