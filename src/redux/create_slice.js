@@ -58,7 +58,8 @@ export const CounterSlice = createSlice({
   user_groupnames:[],
   admin_groupnames:[],
   admingroup:[],
-  updateamount:[]
+  updateamount:[],
+  loader:false
   },
   reducers: {
     statusshow:(state,action)=>{
@@ -114,10 +115,24 @@ export const CounterSlice = createSlice({
     },
     set_admin_groupname:(state,actions)=>{
       state.admin_groupnames=actions.payload
-  },
-  loader:(state,action)=>{state.loader=action.payload}
-}
+    },
+    getRegisterData:(state,action)=>{
+      state.registerData=action.payload
+    },
+    getLoginData:(state,action)=>{
+      state.loginData=action.payload
+    },
+    getloginUser:(state,action)=>{
+        state.loginUserDetails=action.payload
+      },
+    setrefresh:(state,action)=>{
+      state.refresh=action.payload
+
+    },
+    loader:(state,action)=>{state.loader=action.payload}
+
+  }
 })
 
-export const { statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, loader,getLoginData, getloginUser, getgroupname, individualData, adminData, statusData, groupdata, eachgroupdata, sendEmails,payment,set_admin_groupname,getadmingroup,setadminid } = CounterSlice.actions
+export const { statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, loader,getLoginData, getloginUser, getgroupname, individualData, adminData, statusData, groupdata, eachgroupdata, sendEmails,setrefresh,payment,set_admin_groupname,getadmingroup,setadminid } = CounterSlice.actions
 export default CounterSlice.reducer

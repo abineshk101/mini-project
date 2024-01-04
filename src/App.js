@@ -2,8 +2,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import store from './redux/store';
 import axios from 'axios';
-import { useEffect } from 'react';
 import { Provider,useSelector } from 'react-redux';
+
+import { useEffect } from 'react';
 import Login from './login_and_register/login/login'
 import Register from './login_and_register/Register/register';
 import {
@@ -63,12 +64,20 @@ const router = createBrowserRouter([
 
 function App() {
 
+
+
+
+
   return(
-    <Provider store={store} >
-   
+
+    <>
+
+  <Provider store={store} >
     <RouterProvider router={router} />
-    
     </Provider>
+    </>
+    
+  
   )
 }
 

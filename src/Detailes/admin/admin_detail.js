@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import Table from 'react-bootstrap/Table';
 import { adminData, statusshow } from "../../redux/create_slice";
 import { useSelector, useDispatch } from "react-redux";
+import Navbar from "../../login_and_register/header/navbar";
 import './style1.css'
 import Badge from 'react-bootstrap/Badge';
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import Button from 'react-bootstrap/Button';
-import Navbar from "../../login_and_register/header/navbar"
 
 
 

@@ -14,7 +14,7 @@ function Payment() {
     let userid=useSelector((state)=>state.userdetail.loginUserDetails.id)
         console.log(userid)
  
-
+let token=localStorage.getItem('token')
     function change(e){
         dispatch(payment({...pay,month:e.target.value}))
     }
@@ -28,8 +28,8 @@ function Payment() {
     console.log(pay.amount)
     console.log(pay.month)
     console.log(formdata) 
-        axios.post(`https://agaram.academy/api/shh/index.php?request=add_group_amount`,formdata).then(function(res){console.log(res)})
-        window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
+        axios.post(`https://agaram.academy/api/shh/index.php?request=add_group_amount&token=${token}`,formdata).then(function(res){console.log(res)})
+        // window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
     }
     return (
         <>

@@ -25,7 +25,6 @@ let logindata=useSelector((state)=>state.userdetail.loginUserDetails)
             else
             {
             apidata() 
-            adddateafterdeadline()
             }
         },[logindata.id]
         )
@@ -33,10 +32,11 @@ let separte_group_members=useSelector(state=>state.userdetail.groupdata.members)
 let separte_group_data=useSelector(state=>state.userdetail.eachgroupdata)
 let group_data=useSelector(state=>state.userdetail.eachgroupdata)
 let deadline=useSelector((state)=>state.userdetail.eachgroupdata.deadline)
+let deadlinedate=Number(deadline)
 let loaderstatus=useSelector((state=>state.userdetail.loader))
-let deadlinedateformat =moment().format(` MM/${deadline}/YYYY`);
+let deadlinedateformat =moment().format(` MM/${deadlinedate}/YYYY`);
 let currentdate=moment().format(` MM/DD/YYYY`)
-let afterdeadlinedate=deadline+1;
+let afterdeadlinedate=deadlinedate+1;
 let totalmonth=(Number(group_data.total_month))
 let groupdeletemonth =moment().add(totalmonth, 'month').calendar();
 let afterdeadlinedateformat =moment().format(`${afterdeadlinedate} MMMM YYYY`);
@@ -69,7 +69,6 @@ const apidata=()=>
 {
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}&token=${token}`).then(res=>
     {
-
         dispatch(groupdata(res.data.data.members))
         dispatch(eachgroupdata(res.data.data))
         dispatch(loader(true))
@@ -78,7 +77,7 @@ const apidata=()=>
     )
     
 }
-
+console.log(typeof(deadlinedate))
 const checkloginuser=(id)=>{
   
     if(id===logindata.id)
@@ -106,16 +105,10 @@ function deadlinealert()
     else if(afterdeadlinedateformat>=currentdate)
     {
 
-        // let addmonth =moment().add(1, 'month').calendar()
-        let deadlinedateformat=moment().format(`${deadline} ${addmonth} YYYY`)
+         deadlinedateformat=moment().format(` ${addmonth} `)
     }
 }
-    if(afterdeadlinedateformat>=currentdate)
-    {
-
-        let addmonth =moment().add(1, 'month').calendar()
-        deadlinedateformat=moment().format(` ${addmonth} `)
-    }
+   
     function group_delete()
     {
         if(groupdeletemonth<=currentdate)
@@ -141,15 +134,15 @@ function deadlinealert()
         dispatch(loader(false))
         navigate('/homepage')
     }
-function adddateafterdeadline()
-{
-    if(afterdeadlinedateformat==currentdate)
-    {
+// function adddateafterdeadline()
+// {
+//     if(afterdeadlinedateformat==currentdate)
+//     {
 
-        let addmonth =moment().add(1, 'month').calendar()
-        deadlinedateformat=moment().format(`${deadline} ${addmonth} YYYY`)
-    }
-}
+//         let addmonth =moment().add(1, 'month').calendar()
+//         deadlinedateformat=moment().format(`${deadline} ${addmonth} YYYY`)
+//     }
+// }
     return(
         <>
         <Navbar />
@@ -178,7 +171,6 @@ function adddateafterdeadline()
        </ListGroup>
         </CardBody></Card>
         </Button>
-
         {
         separte_group_members.map(
             (id)=>{
