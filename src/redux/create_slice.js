@@ -129,10 +129,14 @@ export const CounterSlice = createSlice({
     set_admin_groupname:(state,actions)=>{
       state.admin_groupnames=actions.payload
   },
+  setrefresh:(state,action)=>{
+    state.refresh=action.payload
+
+  }
 }
 })
 
-export const { statusToken,statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, getLoginData, getloginUser, getgroupname, individualData, adminData, groupdata, eachgroupdata, sendEmails,payment,set_admin_groupname,getadmingroup,setadminid } = CounterSlice.actions
+export const { statusToken,statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, getLoginData, getloginUser, getgroupname, individualData, adminData, groupdata, eachgroupdata, sendEmails,payment,set_admin_groupname,getadmingroup,setadminid,statusData,setrefresh } = CounterSlice.actions
 export default CounterSlice.reducer
 
 
