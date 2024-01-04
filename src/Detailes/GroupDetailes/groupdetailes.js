@@ -74,14 +74,12 @@ function deadlinealert()
             // emailsend 
     }
     
-    
 }
     return(
         <>
         <Navbar />
-          <Button type='button' className='btn btn-dark' style={{float:'left'}} onClick={()=>{navigate("/homepage")}}> Go Back </Button> 
-          <Button type='button'onClick={deadlinealert}>Deadlinealert</Button><br/>
-   { logindata.id==separte_group_data.admin_id?<h6 style={{float:'right'}}> <Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6> :<></>}
+          <Button type='button' className='btn btn-dark' onClick={deadlinealert}>Deadlinealert</Button><br/>
+   { logindata.id==separte_group_data.admin_id?<h6 style={{float:'right'}}> <Button className='btn btn-dark' onClick={()=>navigate('/email')}>Add User</Button></h6> :<></>}
         <div style={{display:"inline-block"}}>
        
         <h6>your name :{logindata.name}</h6>
@@ -92,13 +90,13 @@ function deadlinealert()
 
 <h6>Amount Per Month :{group_data.amount_per_month}</h6>
 <h6>Total month :{group_data.total_month}</h6>
-<h6> Deadline :{deadlinedateformat}</h6>
+{/* <h6> Deadline :{deadlinedateformat}</h6> */}
 {/* <h6>Deadlinealert :{deadlinecounter}</h6> */}
 </div>
         <></>
      <Table style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
            <h1>{separte_group_data.name}</h1>
-     <Button type='button' onClick={()=>adminpage(separte_group_data.admin_id)}>
+     <Button type='button' onClick={()=>adminpage(separte_group_data.admin_id)} className='btn btn-dark'>
          <Card><CardBody>
             <h2 style={{fontFamily: 'Times New Roman", Times, serif', fontSize:'20px'}}>Admin Detailes</h2>
          <ListGroup variant="flush">
@@ -108,7 +106,7 @@ function deadlinealert()
         </CardBody></Card>
         </Button>
         <h2 style={{fontFamily: 'Times New Roman", Times, serif', fontSize:'20px'}}>Your Detailes</h2>
-        <Button type='button' className='btn btn-info' onClick={()=>checkloginuser(logindata.id)} style={{ width: '18rem' }}>               
+        <Button type='button' className='btn btn-dark' onClick={()=>checkloginuser(logindata.id)} style={{ width: '18rem' }}>               
          <ListGroup variant="flush">
             <ListGroup.Item>{logindata.name}</ListGroup.Item>
             <ListGroup.Item>{logindata.email}</ListGroup.Item>
