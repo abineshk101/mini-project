@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { payment } from "../../redux/create_slice"
+import { payment,statusData } from "../../redux/create_slice"
 import axios from "axios"
 import Button from 'react-bootstrap/Button';
 import { useParams } from "react-router";
@@ -13,8 +13,6 @@ function Payment() {
         console.log(groupid)
     let userid=useSelector((state)=>state.userdetail.loginUserDetails.id)
         console.log(userid)
- 
-
     function change(e){
         dispatch(payment({...pay,month:e.target.value}))
     }
@@ -28,6 +26,7 @@ function Payment() {
     console.log(pay.amount)
     console.log(pay.month)
     console.log(formdata) 
+
         axios.post(`https://agaram.academy/api/shh/index.php?request=add_group_amount`,formdata).then(function(res){console.log(res)})
         window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
     }
@@ -62,8 +61,6 @@ function Payment() {
             <input value="DEC" type="radio" name="JAN" onChange={change } />
             <span> December </span><br/>
             <Button type="button" variant="primary" onClick={()=>stripe()}>Pay</Button>
-
-
         </>
 
     )

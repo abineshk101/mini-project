@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import './style.css'
-import { individualData,statusData,updateAmount} from "../../redux/create_slice";
+import { individualData,updateAmount} from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import Button from 'react-bootstrap/Button';
@@ -11,24 +11,22 @@ import { useNavigate } from "react-router";
 
 
 function UserIndividualDetailes() {
+  const token=localStorage.getItem("token")
   const individual=useSelector((state)=>state.userdetail.individual)
-  const status=useSelector((state)=>state.userdetail.status)
   const loginid=useSelector((state)=>state.userdetail.loginUserDetails.id)
   const updateamount=useSelector((state)=>state.userdetail.updateamount)
     console.log(updateamount)
-  
-  
-
+  const statustoken=useSelector((state)=>state.userdetail.statustoken)
+    console.log(statustoken)
   const navigate=useNavigate()
-  console.log(individual)
+    console.log(individual)
   const {groupid}=useParams()
-  const {token}=useParams()
-  console.log(token)
   const dispatch=useDispatch()
   useEffect(() => {
     individualEach()
     razor()
   }, [])
+  
   function individualEach(){
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
       .then(res => dispatch(individualData(res.data.data.members)))
@@ -50,7 +48,7 @@ function UserIndividualDetailes() {
     console.log(number)
  
   const razorPay=()=>{
-    dispatch(statusData(true))
+    
     navigate(`/payment/${groupid}`)
 
   }
@@ -71,13 +69,11 @@ function UserIndividualDetailes() {
             <h3>{indi.email}</h3>
             <h3>{indi.phone}</h3>
             <h3>{number}</h3>
-            Payment Status: {status?<span class="button">Paid</span>:<span>Pending</span>}<br/>
+            Payment Status: {statustoken?<span class="button">Paid</span>:<span>Pending</span>}<br/>
             </>:""}
             </>
           )}
           <Button variant="primary" onClick={()=>razorPay()}>Pay</Button>
-          
-
           </>
           
       </Card.Body>

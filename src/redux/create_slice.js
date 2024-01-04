@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
+    statustoken:"",
     statuss:[],
     emailsend: "",
     individual: [
@@ -11,7 +12,7 @@ export const CounterSlice = createSlice({
     admin: {
       members: []
     },
-    status: false,
+    
     membersList: [],
     groupdetailes: {
       groupname: "",
@@ -76,6 +77,9 @@ export const CounterSlice = createSlice({
     statusshow:(state,action)=>{
       state.statuss=action.payload
     },
+    statusToken:(state,action)=>{
+      state.statustoken=action.payload
+    },
     updateAmount:(state,action)=>{
       state.updateamount=action.payload
     },
@@ -85,9 +89,7 @@ export const CounterSlice = createSlice({
     adminData: (state, action) => {
       state.admin = action.payload
     },
-    statusData: (state, action) => {
-      state.status = action.payload
-    },
+    
     addMembers: (state,actions) => {
         state.membersList=actions.payload
     },
@@ -130,7 +132,7 @@ export const CounterSlice = createSlice({
 }
 })
 
-export const { statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, getLoginData, getloginUser, getgroupname, individualData, adminData, statusData, groupdata, eachgroupdata, sendEmails,payment,set_admin_groupname,getadmingroup,setadminid } = CounterSlice.actions
+export const { statusToken,statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, getLoginData, getloginUser, getgroupname, individualData, adminData, groupdata, eachgroupdata, sendEmails,payment,set_admin_groupname,getadmingroup,setadminid } = CounterSlice.actions
 export default CounterSlice.reducer
 
 

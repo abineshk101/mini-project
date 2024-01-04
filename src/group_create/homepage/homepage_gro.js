@@ -5,13 +5,17 @@ import Navbar from "../../login_and_register/header/navbar";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSelector,useDispatch } from "react-redux";
-import { getgroupname,set_admin_groupname } from "../../redux/create_slice";
+import { getgroupname,set_admin_groupname,statusToken } from "../../redux/create_slice";
+import { useParams } from "react-router";
 
 function ShareGroupDetailes()
 {  
     let token=localStorage.getItem("token")
     let navigate=useNavigate()
     let dispatch=useDispatch()
+    let {statustoken}=useParams()
+    console.log(statustoken)
+    dispatch(statusToken(statustoken))
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
     let groupname=useSelector((state)=>state.userdetail.user_groupnames)
     let show_admin_groupnames=useSelector((state)=>state.userdetail.admin_groupnames)
@@ -28,7 +32,6 @@ function ShareGroupDetailes()
     function admin_groups(){
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}&token=${token}`).then(function(res){
         dispatch(set_admin_groupname(res.data.data))
-
     })
     }
     useEffect(()=>{
