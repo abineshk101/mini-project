@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import './style.css'
-import { individualData,statusData,updateAmount} from "../../redux/create_slice";
+import { individualData,updateAmount,getloginUser} from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
 // import { useParams } from "react-router";
 import Button from 'react-bootstrap/Button';
@@ -14,24 +14,36 @@ import Navbar from "../../login_and_register/header/navbar"
 
 
 function UserIndividualDetailes() {
+  const token=localStorage.getItem("token")
   const individual=useSelector((state)=>state.userdetail.individual)
-  const status=useSelector((state)=>state.userdetail.status)
   const loginid=useSelector((state)=>state.userdetail.loginUserDetails.id)
   const updateamount=useSelector((state)=>state.userdetail.updateamount)
-  const statustoken=useSelector((state)=>state.userdetail.statustoken)
 
+    console.log(updateamount)
+  const statustoken=useSelector((state)=>state.userdetail.statustoken)
+    console.log(statustoken)
   const navigate=useNavigate()
-  console.log(individual)
+    console.log(individual)
   const {groupid}=useParams()
-  const {token}=useParams()
-  console.log(token)
   const dispatch=useDispatch()
-  useEffect(() => {
-    individualEach()
-    razor()
-  }, [])
+  useEffect(()=>
+        {
+          individualEach()
+          razor()
+            
+        },[]
+    )
+    function tokens()
+    {
+        axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
+        {
+            console.log(res)
+
+        dispatch(getloginUser(res.data.data))
+        })
+    }
   function individualEach(){
-    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}&token=${token}`)
       .then(res => dispatch(individualData(res.data.data.members)))
   }
   function razor(){
@@ -51,7 +63,7 @@ function UserIndividualDetailes() {
     console.log(number)
  
   const razorPay=()=>{
-    dispatch(statusData(true))
+    
     navigate(`/payment/${groupid}`)
   }
   const email=()=>{
