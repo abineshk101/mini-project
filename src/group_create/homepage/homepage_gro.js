@@ -53,7 +53,9 @@ function ShareGroupDetailes()
 
 
     return(
+        
         <>
+    
         <Navbar />
         <h2>Self Help Hub</h2>
         {groupname?<h2>Users Groups</h2>:null}
@@ -86,6 +88,7 @@ function ShareGroupDetailes()
         <Button type="button" onClick={()=>creategroup()} >Create Group</Button>
         <br/><br/>
         </>
+        
     )
     }
 export default ShareGroupDetailes
