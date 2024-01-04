@@ -10,11 +10,11 @@ export default function ContactUs() {
   function sendEmail(e) {
     e.preventDefault();
 
-    emailjs.sendForm('service_75o6pgf', 'template_hz6tzpp', e.target, 'SpZHCGmDtQP5l4zn1')
+    emailjs.sendForm('service_723uvns', 'template_csw2gvh', e.target, 'F0OHQ__uJS6K9cMMN')
       .then((result) => {
-          console.log(result.text);
+          console.log(result);
       }, (error) => {
-          console.log(error.text);
+          console.log("error",error);
       });
   }
   return (
