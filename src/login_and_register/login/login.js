@@ -18,7 +18,7 @@ function Login(){
         const navigate=useNavigate()
 useEffect(()=>{
     if(localStorage.getItem("token")){
-       navigate('/homepage')
+       navigate('/homepage/:payment')
     
 }
 },[])
@@ -56,7 +56,7 @@ const checkLogin=()=>{
         addUser()
       }
      }
-        navigate('/homepage')
+        navigate('/homepage/:')
         }
       else{
         alert("enter the valid email or password")
@@ -68,8 +68,6 @@ const checkLogin=()=>{
 const checkclientRegister=()=>{
   navigate('/register')
 }
-
-
     return(
         <>
          <div>
@@ -95,4 +93,4 @@ const checkclientRegister=()=>{
         </>
     )
 }
-export default Login;
+export default Login

@@ -2,21 +2,20 @@ import React from "react";
 import axios from 'axios';
 import { useEffect } from "react";
 import Table from 'react-bootstrap/Table';
-import { adminData ,statusshow} from "../../redux/create_slice";
-import {useSelector,useDispatch } from "react-redux";
+import { adminData, statusshow } from "../../redux/create_slice";
+import { useSelector, useDispatch } from "react-redux";
+import Navbar from "../../login_and_register/header/navbar";
 import './style1.css'
 import Badge from 'react-bootstrap/Badge';
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import Button from 'react-bootstrap/Button';
-import Navbar from "../../login_and_register/header/navbar"
 
 
 
 function GroupDetailes() {
   const admin = useSelector((state) => state.userdetail.admin)
   console.log(admin)
-  const status = useSelector((state) => state.userdetail.status)
   const pay = useSelector((state) => state.userdetail.payment)
   const statusss = useSelector((state) => state.userdetail.statuss)
   console.log(statusss)
@@ -34,9 +33,7 @@ console.log(a)
     adminEach()
     statusShow()
   }, [])
-  function back() {
-    navigate(`/groupdetails/${groupid}`)
-  }
+  
   function adminEach() {
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
       .then(res => dispatch(adminData(res.data.data)))

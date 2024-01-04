@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     element:<ContactUs/>
   },
   {
-    path:"/homepage",
+    path:"/homepage/:payment",
     element:<ShareGroupDetailes />
   },
   {
@@ -58,7 +58,8 @@ const router = createBrowserRouter([
   {
     path:"/groupdetails/:groupid",
     element:<Eachgroupdetailes />
-  },{
+  },
+  {
     path:"/payment/:groupid",
     element:<Payment />
   }
@@ -68,18 +69,6 @@ const router = createBrowserRouter([
 
 function App() {
 
-      // function maintain_session(){
-        // axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res){
-        //     console.log(res.data.data)
-        // })
-    //   }
-      
-    //   let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
-    //   let token=localStorage.getItem("token")
-    //   useEffect(()=>{
-    //       if(!loggedin_id && token )
-    //       maintain_session()
-    //     },[loggedin_id])  
 
 
 
