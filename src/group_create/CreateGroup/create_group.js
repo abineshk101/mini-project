@@ -28,6 +28,7 @@ function CreateGroup()
     axios.post(`https://agaram.academy/api/shh/index.php?request=create_group`,formdata).then(function(res)
     {
       console.log(res)   
+      navigate("/homepage")
     })
     }
     

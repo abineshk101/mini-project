@@ -5,40 +5,63 @@ import Navbar from "../../login_and_register/header/navbar";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSelector,useDispatch } from "react-redux";
-import { getgroupname,set_admin_groupname } from "../../redux/create_slice";
+import { getgroupname,set_admin_groupname,getloginUser } from "../../redux/create_slice";
 
 function ShareGroupDetailes()
 {  
-    let token=localStorage.getItem("token")
+
+    let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
+    let refresh=useSelector((state)=>state.userdetail.refresh)
+    let token=localStorage.getItem('token')
+    useEffect(()=>
+        {
+            if(localStorage.getItem('token')&&!loggedin_id)
+            {
+                tokens()
+                // securealert()
+            }
+            else
+            {    
+                filteredList()
+                admin_groups()
+            }
+        },[loggedin_id]
+    )
+
+
     let navigate=useNavigate()
     let dispatch=useDispatch()
-    let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
+    let loggedin_detail=useSelector((state)=>state.userdetail.loginUserDetails)
     let groupname=useSelector((state)=>state.userdetail.user_groupnames)
     let show_admin_groupnames=useSelector((state)=>state.userdetail.admin_groupnames)
     let loggedin_user=useSelector((state)=>state.userdetail.loginUserDetails.name)
     let adminid=useSelector((state)=>state.userdetail.groupdetailes.adminid)
 
-    
+      console.log(loggedin_detail)
 
     function filteredList(){
         axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_groups&user_id=${loggedin_id}&token=${token}`).then(function(response){
             console.log(response)
         dispatch(getgroupname(response.data.data))
     })}
+
     function admin_groups(){
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}&token=${token}`).then(function(res){
         dispatch(set_admin_groupname(res.data.data))
 
     })
     }
-    useEffect(()=>{
-        if(localStorage.getItem('login')){
-            filteredList()
-            admin_groups()
-        }else{
-            navigate('/')
-        }
-    },[])
+    function tokens()
+    {
+        axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
+        {
+            console.log(res)
+
+        dispatch(getloginUser(res.data.data))
+        console.log(loggedin_detail)
+        })
+    }
+
     console.log(groupname)
     console.log(show_admin_groupnames)
     
@@ -49,28 +72,37 @@ function ShareGroupDetailes()
     {
         navigate("/creategroup")       
     }
-  
+    function securealert()
+    {
+        if(!token)
+        {
+            navigate('/')
+        }
+    }
 
 
     return(
         <>
         <Navbar />
+      
         <h2>Self Help Hub</h2>
-        {groupname?<h2>Users Groups</h2>:null}
-        {groupname?
+        <h2>Users Groups</h2>
+        {
         groupname.map((data)=>{
             return (<>
             <div>
                 <ul>
-                <li><Button type="button" variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
+                <li><Button type="button"className=".bn5" variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
                 </ul>
             </div>
                 </>
             )
         }
-        ):null}
-        {show_admin_groupnames?<h2>Admin group</h2>:null}
-        {show_admin_groupnames? 
+        )}
+
+
+        <h2>Admin group</h2>
+        {
         show_admin_groupnames.map((data)=>{
             return (<>
             <div>
@@ -81,7 +113,7 @@ function ShareGroupDetailes()
                 </>
             )
         }
-        ):null 
+        )
         }
         <Button type="button" onClick={()=>creategroup()} >Create Group</Button>
         <br/><br/>

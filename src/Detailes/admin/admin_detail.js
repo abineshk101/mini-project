@@ -4,6 +4,7 @@ import {useEffect } from "react";
 import Table from 'react-bootstrap/Table';
 import { adminData } from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
+import Navbar from "../../login_and_register/header/navbar";
 import './style1.css'
 import Badge from 'react-bootstrap/Badge';
 import { useParams } from "react-router";
@@ -23,6 +24,7 @@ function GroupDetailes()
       },[])
     return(
         <>
+        <Navbar />
         <div class="box">
         <h1 className="text-center text-dark">{admin.name}</h1>
         <h5 className="text-center text-dark">Admin: {admin.admin_name}</h5>
