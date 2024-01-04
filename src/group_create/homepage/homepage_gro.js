@@ -3,13 +3,15 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Navbar from "../../login_and_register/header/navbar";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate ,useParams} from "react-router";
 import { useSelector,useDispatch } from "react-redux";
 import { getgroupname,set_admin_groupname } from "../../redux/create_slice";
 
 function ShareGroupDetailes()
 {  
     let token=localStorage.getItem("token")
+    let{payment}=useParams()
+    console.log(payment)
     let navigate=useNavigate()
     let dispatch=useDispatch()
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
@@ -86,7 +88,7 @@ function ShareGroupDetailes()
         }
         ):null 
         }
-        <Button type="button" onClick={()=>creategroup()} >Create Group</Button>
+        <Button type="button" variant="dark" onClick={()=>creategroup()} >Create Group</Button>
         <br/><br/>
         </div>
         </>

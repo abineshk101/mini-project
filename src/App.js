@@ -39,6 +39,10 @@ const router = createBrowserRouter([
     element:<ShareGroupDetailes />
   },
   {
+    path:"/homepage/:payment",
+    element:<ShareGroupDetailes />
+  },
+  {
     path:"/",
     element:<Login />
   },

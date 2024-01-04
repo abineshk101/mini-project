@@ -88,7 +88,6 @@ function deadlinealert()
     return(
         <>
         <Navbar />
-          {/* <Button type='button' className='btn btn-dark' style={{float:'left'}} onClick={()=>{navigate("/homepage")}}> Go Back </Button>  */}
           <Button type='button' className='btn btn-dark' onClick={deadlinealert}>Deadlinealert</Button><br/>
    { logindata.id==separte_group_data.admin_id?<h6 style={{float:'right'}}> <Button className='btn btn-dark' onClick={()=>navigate('/email')}>Add User</Button></h6> :<></>}
         <div style={{display:"inline-block"}}>
