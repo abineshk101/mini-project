@@ -28,14 +28,10 @@ function UserIndividualDetailes() {
   const dispatch=useDispatch()
   useEffect(()=>
         {
-            if(localStorage.getItem('token')&&!loginid)
-            {
-                tokens()
-            }else{
-            individualEach()
-            razor()
-            }
-        },[loginid]
+          individualEach()
+          razor()
+            
+        },[]
     )
     function tokens()
     {

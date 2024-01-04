@@ -16,8 +16,7 @@ function Payment() {
     function change(e){
         dispatch(payment({...pay,month:e.target.value}))
     }
-    const stripe=()=>{
-           
+    const stripe=()=>{  
     let formdata= new FormData()
     formdata.append("group_id",groupid)
     formdata.append("user_id",userid)
@@ -45,6 +44,7 @@ function Payment() {
             <span> <input value="MAR" type="radio" name="JAN" onChange={change } /> March </span>
             
             <span> <input value="APR" type="radio" name="JAN" onChange={change } />April </span>
+
             <span> <input value="MAY" type="radio" name="JAN" onChange={change } /> May </span>
             
             <span> <input value="JUN" type="radio" name="JAN" onChange={change } />June </span>

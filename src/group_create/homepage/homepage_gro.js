@@ -31,9 +31,6 @@ function ShareGroupDetailes()
             }
         },[loggedin_id]
     )
-
-
-   
     let loggedin_detail=useSelector((state)=>state.userdetail.loginUserDetails)
     let groupname=useSelector((state)=>state.userdetail.user_groupnames)
     let show_admin_groupnames=useSelector((state)=>state.userdetail.admin_groupnames)
@@ -81,8 +78,6 @@ function ShareGroupDetailes()
             navigate('/')
         }
     }
-
-
     return(
         <>
 
