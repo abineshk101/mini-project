@@ -16,6 +16,7 @@ function  Eachgroupdetailes()
 {
     useEffect(
         ()=>{apidata() 
+            adddateafterdeadline()
         },[]
         )
 let logindata=useSelector((state)=>state.userdetail.loginUserDetails)
@@ -32,12 +33,13 @@ let groupdeletemonth =moment().add(totalmonth, 'month').calendar();
 let afterdeadlinedateformat =moment().format(`${afterdeadlinedate} MMMM YYYY`);
 let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
 let addmonth =moment().add(1, 'month').calendar()
+let token=localStorage.getItem("token")
 const {groupid}= useParams()
 const navigate=useNavigate()
 const dispatch=useDispatch()
 const apidata=()=>
 {
-    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`).then(res=>
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}&token=${token}`).then(res=>
     {
 
         dispatch(groupdata(res.data.data.members))
@@ -73,22 +75,22 @@ function deadlinealert()
     {
             // emailsend 
     }
-    else if(afterdeadlinedateformat==currentdate)
+    else if(afterdeadlinedateformat>=currentdate)
     {
 
-        let addmonth =moment().add(1, 'month').calendar()
+        // let addmonth =moment().add(1, 'month').calendar()
         let deadlinedateformat=moment().format(`${deadline} ${addmonth} YYYY`)
     }
 }
-    if(afterdeadlinedateformat==currentdate)
+    if(afterdeadlinedateformat>=currentdate)
     {
 
         let addmonth =moment().add(1, 'month').calendar()
-        deadlinedateformat=moment().format(`${deadline} ${addmonth} YYYY`)
+        deadlinedateformat=moment().format(` ${addmonth} `)
     }
     function group_delete()
     {
-        if(groupdeletemonth==currentdate)
+        if(groupdeletemonth<=currentdate)
         {
             axios.delete(`https://agaram.academy/api/shh/index.php?request=delete_group&group_id=${group_data.id}&admin_id=${logindata.id}`).then
             (
@@ -111,7 +113,15 @@ function deadlinealert()
         dispatch(loader(false))
         navigate('/homepage')
     }
+function adddateafterdeadline()
+{
+    if(afterdeadlinedateformat==currentdate)
+    {
 
+        let addmonth =moment().add(1, 'month').calendar()
+        deadlinedateformat=moment().format(`${deadline} ${addmonth} YYYY`)
+    }
+}
     return(
         <>
         <Navbar />
@@ -122,7 +132,7 @@ function deadlinealert()
 
    { logindata.id==separte_group_data.admin_id?<h6 style={{float:'right'}}> <Button className='primary' onClick={()=>navigate('/email')}>Add User</Button></h6> :<></>}
         <div style={{display:"inline-block"}}>
-      
+     
         <h6>your name :{logindata.name}</h6>
         <h6> your id :{logindata.id}</h6>
         </div>
@@ -143,7 +153,31 @@ function deadlinealert()
        </ListGroup>
         </CardBody></Card>
         </Button>
-    
+
+        {
+        separte_group_members.map(
+            (id)=>{
+                return(
+                    
+                  <> 
+                    
+                  {id.id==logindata.id?  
+                  <>
+
+<h2 style={{fontFamily: 'Times New Roman", Times, serif', fontSize:'20px'}}>Your Detailes</h2>  
+                    <Button type='button' className='btn btn-info' onClick={()=>checkloginuser(logindata.id)} style={{ width: '18rem' }}>               
+                <ListGroup variant="flush">
+                   <ListGroup.Item>{logindata.name}</ListGroup.Item>
+                 
+                   <ListGroup.Item>{logindata.email}</ListGroup.Item>
+             </ListGroup>
+          
+           </Button></>:<></>}</>)
+                    
+                
+            }
+        )
+     }
         <h2 style={{fontFamily: 'Times New Roman", Times, serif', fontSize:'20px'}}>List of members</h2>
         {
        separte_group_members.map(

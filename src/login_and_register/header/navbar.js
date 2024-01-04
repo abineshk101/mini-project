@@ -11,7 +11,7 @@ function Navbar(){
   const admingroupcount=useSelector(state=>state.userdetail.admin_groupnames)
 
   function Logout(){
-        localStorage.removeItem('Auth-token')
+        localStorage.removeItem('token')
         localStorage.removeItem('login')
         navigate('/')
 
@@ -32,6 +32,8 @@ function Navbar(){
 
   <div class="menu">
     <ul>
+     
+    <button onClick={() => navigate(-1)}>Go back</button>
       <li>
         <Link to='/homepage'>Home</Link>
       </li>
@@ -42,7 +44,7 @@ function Navbar(){
           <h4> Your Mail:{logindata.email}</h4>
       </li>
      <li>
-      {/* <h4>Group  as user:{groupcount.length}</h4> */}
+      <h4>Group  as user:{groupcount.length}</h4>
      </li>
      <li>
       <h4>Group  as admin:{admingroupcount.length}</h4>

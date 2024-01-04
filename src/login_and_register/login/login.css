@@ -1,18 +1,18 @@
-.containers{
+ .containers{
     background-image: url('https://img.freepik.com/free-photo/dollar-banknotes-frame_1150-6686.jpg');
     height: 100vh;
     background-repeat: no-rept;
     background-size: cover;
     position: relative;
-}
+ }
 .login{
     text-align: center;
     background-image: url('');
-      width:500px;
-      position: absolute;
-      left: 50%;
-      top: 60%;
-      transform: translate(-50%,-50%);
+    width:500px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%,-50%);
       
 }
 .login i{
