@@ -2,8 +2,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import store from './redux/store';
 import axios from 'axios';
-import { useEffect } from 'react';
 import { Provider,useSelector } from 'react-redux';
+
+import { useEffect } from 'react';
 import Login from './login_and_register/login/login'
 import Register from './login_and_register/Register/register';
 import {
@@ -18,6 +19,7 @@ import React from 'react';
 import ShareGroupDetailes from './group_create/homepage/homepage_gro';
 import CreateGroup from './group_create/CreateGroup/create_group';
 import Eachgroupdetailes from './Detailes/GroupDetailes/groupdetailes';
+import Payment from './Detailes/individual/payment';
 
 const router = createBrowserRouter([
   
@@ -29,14 +31,16 @@ const router = createBrowserRouter([
     path:"/admin/:groupid",
     element:<GroupDetailes/>
   },
-    
- 
   {
     path:"/email",
     element:<ContactUs/>
   },
   {
     path:"/homepage",
+    element:<ShareGroupDetailes />
+  },
+  {
+    path:"/homepage/:statustoken",
     element:<ShareGroupDetailes />
   },
   {
@@ -54,6 +58,9 @@ const router = createBrowserRouter([
   {
     path:"/groupdetails/:groupid",
     element:<Eachgroupdetailes />
+  },{
+    path:"/payment/:groupid",
+    element:<Payment />
   }
  
 ]);
@@ -61,12 +68,32 @@ const router = createBrowserRouter([
 
 function App() {
 
+      // function maintain_session(){
+        // axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res){
+        //     console.log(res.data.data)
+        // })
+    //   }
+      
+    //   let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
+    //   let token=localStorage.getItem("token")
+    //   useEffect(()=>{
+    //       if(!loggedin_id && token )
+    //       maintain_session()
+    //     },[loggedin_id])  
+
+
+
+
   return(
-    <Provider store={store} >
-   
+
+    <>
+
+  <Provider store={store} >
     <RouterProvider router={router} />
-    
     </Provider>
+    </>
+    
+  
   )
 }
 
