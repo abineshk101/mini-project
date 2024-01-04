@@ -18,6 +18,8 @@ function UserIndividualDetailes() {
   const status=useSelector((state)=>state.userdetail.status)
   const loginid=useSelector((state)=>state.userdetail.loginUserDetails.id)
   const updateamount=useSelector((state)=>state.userdetail.updateamount)
+  const statustoken=useSelector((state)=>state.userdetail.statustoken)
+
     console.log(updateamount)
   
 
@@ -73,7 +75,7 @@ function UserIndividualDetailes() {
             <h3>{indi.email}</h3>
             <h3>{indi.phone}</h3>
             <h3>{number}</h3>
-            Payment Status: {status?<span class="button">Paid</span>:<span>Pending</span>}<br/>
+            Payment Status: {statustoken?<span class="button">Paid</span>:<span>Pending</span>}<br/>
             </>:""}
             </>
           )}

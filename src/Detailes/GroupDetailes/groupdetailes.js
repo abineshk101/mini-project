@@ -28,11 +28,8 @@ let deadline=useSelector((state)=>state.userdetail.eachgroupdata.deadline)
 let adminid=useSelector((state)=>state.userdetail.groupdetailes.adminid)
 let deadlinedateformat =moment().format(`${deadline} MMMM YYYY`);
 let currentdate=moment().format(`DD MMMM YYYY`)
-// let afterdeadlinedate=JSON.parse(deadline)+1;
 
-// let afterdeadlinedateformat =moment().format(`${afterdeadlinedate} MMMM YYYY`);
-// console.log(deadlinedateformat,afterdeadlinedateformat,typeof(afterdeadlinedateformat))
-// let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
+let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
 let addmonth =moment().add(1, 'month').calendar()
 let token=localStorage.getItem("token")
 const {groupid}= useParams()
@@ -77,12 +74,6 @@ function deadlinealert()
     {
             // emailsend 
     }
-    // else if(afterdeadlinedateformat==currentdate)
-    // {
-
-    //     let addmonth =moment().add(1, 'month').calendar()
-    //     let deadlinedateformat=moment().format(`${deadline} ${addmonth} YYYY`)
-    // }
     
 }
     return(

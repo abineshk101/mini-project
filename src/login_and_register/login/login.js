@@ -41,7 +41,7 @@ const checkLogin=()=>{
   formdata.append("email",loginUserData.email)
   formdata.append("password",loginUserData.password)
     axios.post(`https://agaram.academy/api/shh/index.php?request=login_user`,formdata).then(function(res){
-      // console.log(res)
+      console.log(res)
         let checkLog=res.data.status
       if(checkLog==='success'){
         console.log(res.data.data)
@@ -68,6 +68,8 @@ const checkLogin=()=>{
 const checkclientRegister=()=>{
   navigate('/register')
 }
+
+
     return(
         <>
          <div>

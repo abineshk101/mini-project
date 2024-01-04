@@ -2,8 +2,8 @@ import React from "react";
 import axios from 'axios';
 import { useEffect } from "react";
 import Table from 'react-bootstrap/Table';
-import { adminData, statusshow } from "../../redux/create_slice";
-import { useSelector, useDispatch } from "react-redux";
+import { adminData ,statusshow} from "../../redux/create_slice";
+import {useSelector,useDispatch } from "react-redux";
 import './style1.css'
 import Badge from 'react-bootstrap/Badge';
 import { useParams } from "react-router";
@@ -47,11 +47,14 @@ console.log(a)
         dispatch(statusshow(res.data.data)))
   }
   
-  return (
-    <>
-      {/* <Button type="button" onClick={() => back()}>Go Back</Button> */}
-      <Navbar/>
-      <div class="box">
+    useEffect(() => {
+        axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
+          .then(res => dispatch(adminData(res.data.data)))
+      },[])
+    return(
+        <>
+        <Navbar />
+        <div class="box">
         <h1 className="text-center text-dark">{admin.name}</h1>
         <h5 className="text-center text-dark">Admin: {admin.admin_name}</h5>
         

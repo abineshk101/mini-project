@@ -1,14 +1,37 @@
 import "./navbar.css"
+import axios from "axios";
+import { useEffect } from "react";
+import { getloginUser,setrefresh } from "../../redux/create_slice";
 import { useNavigate } from "react-router"
-import { useSelector,useDispatch} from "react-redux" 
+import { useSelector,useDispatch} from "react-redux"; 
 import { Link } from "react-router-dom"
 import { Button } from "react-bootstrap"
 function Navbar(){
 
   const navigate=useNavigate()
+  const dispatch=useDispatch()
   const logindata=useSelector(state=>state.userdetail.loginUserDetails)
-  console.log(logindata)
+  let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
+  let loggedin_detail=useSelector((state)=>state.userdetail.loginUserDetails)
+  let token=localStorage.getItem('token')
 
+  useEffect(()=>{
+    if(localStorage.getItem('token')&&!loggedin_id)
+        {
+            tokens()
+        }
+},[loggedin_id])
+
+function tokens()
+{
+    axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
+    {
+        console.log(res)
+
+    dispatch(getloginUser(res.data.data))
+    console.log(loggedin_detail)
+    })
+}
   function Logout(){
         localStorage.removeItem('token')
         localStorage.removeItem('login')
