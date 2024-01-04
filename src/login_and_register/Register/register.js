@@ -5,6 +5,7 @@ import { getRegisterData } from "../../redux/create_slice";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import "./register.css"
+import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Register(){ 
@@ -50,11 +51,13 @@ const navigate=useNavigate()
             <input type="number" required onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,phone:e.target.value}))}}/><br/>
             <label>Addhar:</label><br/>
             <input type="number" required onKeyUp={(e)=>{dispatch(getRegisterData({...registerDetails,addhar:e.target.value}))}}/><br/>
-            <Button variant="primary" type="submit" >submit</Button>
+            <Button variant="primary" type="submit" >submit</Button><br/>
            
             
-          </form>  
-          <Button type="button" variant="success" onClick={()=>checkclientLogin()}>login</Button>  
+          
+          <Link type="button"  variant="info" onClick={()=>checkclientLogin()}>Already have an account?</Link>  
+           </form>
+
                 </>
     )
 }
