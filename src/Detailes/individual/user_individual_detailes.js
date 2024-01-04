@@ -3,7 +3,7 @@ import axios from 'axios';
 import {useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import './style.css'
-import { individualData,updateAmount} from "../../redux/create_slice";
+import { individualData,updateAmount,getloginUser} from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import Button from 'react-bootstrap/Button';
@@ -22,13 +22,28 @@ function UserIndividualDetailes() {
     console.log(individual)
   const {groupid}=useParams()
   const dispatch=useDispatch()
-  useEffect(() => {
-    individualEach()
-    razor()
-  }, [])
-  
+  useEffect(()=>
+        {
+            if(localStorage.getItem('token')&&!loginid)
+            {
+                tokens()
+            }else{
+            individualEach()
+            razor()
+            }
+        },[loginid]
+    )
+    function tokens()
+    {
+        axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
+        {
+            console.log(res)
+
+        dispatch(getloginUser(res.data.data))
+        })
+    }
   function individualEach(){
-    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}&token=${token}`)
       .then(res => dispatch(individualData(res.data.data.members)))
   }
   function razor(){
