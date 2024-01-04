@@ -56,7 +56,7 @@ function CreateGroup() {
           </div>
 
 
-        <Button id="creategroupbutton" className="bn5" onClick={()=>registergroupdata()} > craete group</Button> <br/>
+        <Button id="creategroupbutton" variant="dark" onClick={()=>registergroupdata()} > craete group</Button> <br/>
      
         </div>
       </div>

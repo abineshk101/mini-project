@@ -48,8 +48,6 @@ const apidata=()=>
     
 }
 
-
-
 const checkloginuser=(id)=>{
   
     if(id==logindata.id)

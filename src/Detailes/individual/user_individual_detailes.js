@@ -20,9 +20,6 @@ function UserIndividualDetailes() {
   const updateamount=useSelector((state)=>state.userdetail.updateamount)
   const statustoken=useSelector((state)=>state.userdetail.statustoken)
 
-    console.log(updateamount)
-  
-
   const navigate=useNavigate()
   console.log(individual)
   const {groupid}=useParams()
