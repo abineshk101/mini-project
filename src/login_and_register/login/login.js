@@ -62,7 +62,8 @@ const checkclientRegister=()=>{
 
     return(
         <>
-        <div className="containers">
+
+         <div className="containers">
         {JSON.stringify(getuserIdData)}
         <div className="login">
         <form action="">

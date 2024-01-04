@@ -4,7 +4,7 @@ export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
     emailsend:"",
-    individual:[{}],
+    individual:{members:[]},
     admin:{
           members:[]
           },
@@ -28,12 +28,11 @@ export const CounterSlice = createSlice({
   groupnames:[],
   registerData:{name:"",
                 email:"",
+                password:"",
                 phone:"",
-                aadhar:"",
-                password:""},
+                aadhar:""},
   loginData:{email:"",
             password:""},
-  loginUserDetails:{},
   user_groupnames:[],
   admin_groupnames:[],
   admingroup:[],
