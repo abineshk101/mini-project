@@ -32,35 +32,37 @@ function Payment() {
     }
     return (
         <>
+        <div style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
             <h1>Enter your Payment:</h1>
             <label>Enter your amount:</label>
-            <input type="text" onKeyUp={(e)=>{dispatch(payment({...pay,amount:e.target.value}))}}/><br />
-            <label>Select the month:</label><br />
-            <input value="JAN" type="radio" name="JAN" onChange={change } />
-            <span> January </span><br />
-            <input value="FEB" type="radio" name="JAN" onChange={change } />
-            <span> February </span><br />
-            <input value="MAR" type="radio" name="JAN" onChange={change } />
-            <span> March </span><br />
-            <input value="APR" type="radio" name="JAN" onChange={change } />
-            <span> April </span><br />
-            <input value="MAY" type="radio" name="JAN" onChange={change } />
-            <span> May </span><br />
-            <input value="JUN" type="radio" name="JAN" onChange={change } />
-            <span> June </span><br />
-            <input value="JUL" type="radio" name="JAN" onChange={change } />
-            <span> July </span><br />
-            <input value="AUG" type="radio" name="JAN" onChange={change } />
-            <span> August </span><br />
-            <input value="SEP" type="radio" name="JAN" onChange={change } />
-            <span> September </span><br />
-            <input value="OCT" type="radio" name="JAN" onChange={change } />
-            <span> October </span><br />
-            <input value="NOV" type="radio" name="JAN" onChange={change } />
-            <span> November </span><br />
-            <input value="DEC" type="radio" name="JAN" onChange={change } />
-            <span> December </span><br/>
-            <Button type="button" variant="primary" onClick={()=>stripe()}>Pay</Button>
+            <input type="text" onKeyUp={(e)=>{dispatch(payment({...pay,amount:e.target.value}))}}/>
+            <label>Select the month:</label>
+            
+            <span> <input value="JAN" type="radio" name="JAN" onChange={change }  />January </span>
+           
+            <span> <input value="FEB" type="radio" name="JAN" onChange={change } /> February </span>
+           
+            <span> <input value="MAR" type="radio" name="JAN" onChange={change } /> March </span>
+            
+            <span> <input value="APR" type="radio" name="JAN" onChange={change } />April </span>
+            <span> <input value="MAY" type="radio" name="JAN" onChange={change } /> May </span>
+            
+            <span> <input value="JUN" type="radio" name="JAN" onChange={change } />June </span>
+            
+            <span> <input value="JUL" type="radio" name="JAN" onChange={change } />  July </span>
+          
+            <span>  <input value="AUG" type="radio" name="JAN" onChange={change } /> August </span>
+            
+            <span> <input value="SEP" type="radio" name="JAN" onChange={change } />September </span>
+            
+            <span> <input value="OCT" type="radio" name="JAN" onChange={change } />October </span>
+            
+            <span><input value="NOV" type="radio" name="JAN" onChange={change } /> November </span>
+            
+            <span> <input value="DEC" type="radio" name="JAN" onChange={change } />December </span><br/>
+            <Button type="button" variant="dark" onClick={()=>stripe()}>Pay</Button>
+            </div>
+
         </>
 
     )

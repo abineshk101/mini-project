@@ -1,9 +1,11 @@
  .containers{
-    background-image: url('https://img.freepik.com/free-photo/dollar-banknotes-frame_1150-6686.jpg');
-    height: 100vh;
+    /* background-image: url('https://img.freepik.com/free-photo/dollar-banknotes-frame_1150-6686.jpg'); */
+    background-color: yellow;
+    /* height: 200vh; */
     background-repeat: no-rept;
     background-size: cover;
     position: relative;
+    
  }
 .login{
     text-align: center;

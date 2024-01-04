@@ -5,6 +5,7 @@ export const CounterSlice = createSlice({
   initialState: {
     statustoken:"",
     statuss:[],
+    statustoken:"",
     emailsend: "",
     individual: [
       
@@ -80,6 +81,7 @@ export const CounterSlice = createSlice({
     statusToken:(state,action)=>{
       state.statustoken=action.payload
     },
+    
     updateAmount:(state,action)=>{
       state.updateamount=action.payload
     },

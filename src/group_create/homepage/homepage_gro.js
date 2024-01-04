@@ -3,17 +3,20 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Navbar from "../../login_and_register/header/navbar";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate ,useParams} from "react-router";
 import { useSelector,useDispatch } from "react-redux";
 import { getgroupname,set_admin_groupname,statusToken,getloginUser } from "../../redux/create_slice";
-import { useParams } from "react-router";
 
 function ShareGroupDetailes()
 {  
-
+    let navigate=useNavigate()
+    let dispatch=useDispatch()
+     
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
     let refresh=useSelector((state)=>state.userdetail.refresh)
     let token=localStorage.getItem('token')
+    let{statustoken}=useParams()
+    dispatch(statusToken(statustoken))
     useEffect(()=>
         {
             if(localStorage.getItem('token')&&!loggedin_id)
@@ -30,11 +33,7 @@ function ShareGroupDetailes()
     )
 
 
-    let navigate=useNavigate()
-    let dispatch=useDispatch()
-    let {statustoken}=useParams()
-    console.log(statustoken)
-    dispatch(statusToken(statustoken))
+   
     let loggedin_detail=useSelector((state)=>state.userdetail.loginUserDetails)
     let groupname=useSelector((state)=>state.userdetail.user_groupnames)
     let show_admin_groupnames=useSelector((state)=>state.userdetail.admin_groupnames)
@@ -86,7 +85,9 @@ function ShareGroupDetailes()
 
     return(
         <>
+
         <Navbar />
+        <div style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
       
         <h2>Self Help Hub</h2>
         <h2>Users Groups</h2>
@@ -109,7 +110,7 @@ function ShareGroupDetailes()
         show_admin_groupnames.map((data)=>{
             return (<>
             <div>
-                <ul>
+                <ul style={{listStyle:"none"}}>
                 <li><Button type="button" variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
                 </ul>
             </div>
@@ -118,8 +119,9 @@ function ShareGroupDetailes()
         }
         )
         }
-        <Button type="button" onClick={()=>creategroup()} >Create Group</Button>
+        <Button type="button" variant="dark" onClick={()=>creategroup()} >Create Group</Button>
         <br/><br/>
+        </div>
         </>
     )
     }

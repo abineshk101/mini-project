@@ -16,12 +16,12 @@ function Login(){
     console.log(getuserIdData)
         const dispatch=useDispatch()                                 
         const navigate=useNavigate()
-useEffect(()=>{
-    if(localStorage.getItem("token")){
-       navigate('/homepage')
+// useEffect(()=>{
+//     if(localStorage.getItem("token")){
+//        navigate('/homepage')
     
-}
-},[])
+// }
+// },[])
     const sendemail=useSelector((state)=>state.userdetail.emailsend)
     const eachgroup=useSelector((state)=>state.userdetail.eachgroupdata)
     console.log(sendemail)
@@ -72,9 +72,8 @@ const checkclientRegister=()=>{
 
     return(
         <>
-
-         <div className="containers">
-        {JSON.stringify(getuserIdData)}
+         <div>
+        {/* {JSON.stringify(getuserIdData)} */}
         <div className="login">
         <form action="">
        <b><h1>SIGN IN</h1></b><br/>
@@ -88,12 +87,11 @@ const checkclientRegister=()=>{
         <i class="fa-solid fa-key" ></i>
         <input type="password" placeholder='password' onKeyUp={(e)=>{dispatch(getLoginData({...loginUserData,password:e.target.value}))}}></input><br/>
         </div><br/>
-        <Button type="button"  variant="success" onClick={()=>checkLogin()}>Submit</Button><br/>
+        <Button type="button"  variant="dark" onClick={()=>checkLogin()}>Submit</Button><br/>
         <Link type="button"  variant="info" onClick={()=>checkclientRegister()}>Don't have an account?</Link> 
         </form>  
         </div>
         </div>
-        
         </>
     )
 }

@@ -5,9 +5,12 @@ import Card from 'react-bootstrap/Card';
 import './style.css'
 import { individualData,updateAmount,getloginUser} from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router";
+// import { Navbar } from "react-bootstrap";
+import { useParams } from "react-router"
+import Navbar from "../../login_and_register/header/navbar"
 
 
 function UserIndividualDetailes() {
@@ -15,6 +18,7 @@ function UserIndividualDetailes() {
   const individual=useSelector((state)=>state.userdetail.individual)
   const loginid=useSelector((state)=>state.userdetail.loginUserDetails.id)
   const updateamount=useSelector((state)=>state.userdetail.updateamount)
+
     console.log(updateamount)
   const statustoken=useSelector((state)=>state.userdetail.statustoken)
     console.log(statustoken)
@@ -65,17 +69,17 @@ function UserIndividualDetailes() {
   const razorPay=()=>{
     
     navigate(`/payment/${groupid}`)
-
   }
-  
+  const email=()=>{
+    navigate("/email")
+   }
   return (
     <>
+    <Navbar/>
     <div class="full">
-      
-      <Card class="card text-white bg-dark mb-3" style={{ width: '18rem' }}>
+      <Card class="card text-dark bg-dark mb-3" style={{ width: '18rem' }}>
       <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt7C1jVOcBY3LpyT3GJcdQHAYyBuW6Js6h3w&usqp=CAU" />
-      <Card.Body class="body">
-        
+      <Card.Body class="body"> 
           <>
           {individual.map((indi)=>
             <>
@@ -88,10 +92,9 @@ function UserIndividualDetailes() {
             </>:""}
             </>
           )}
-          <Button variant="primary" onClick={()=>razorPay()}>Pay</Button>
+          <Button variant="light" onClick={()=>razorPay()}>Pay</Button>
           </>
-          
-      </Card.Body>
+    </Card.Body>
     </Card>
     </div>
     </>

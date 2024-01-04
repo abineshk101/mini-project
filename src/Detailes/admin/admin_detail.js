@@ -12,6 +12,7 @@ import { useNavigate } from "react-router";
 import Button from 'react-bootstrap/Button';
 
 
+
 function GroupDetailes() {
   const admin = useSelector((state) => state.userdetail.admin)
   console.log(admin)
@@ -54,7 +55,7 @@ console.log(a)
         <h1 className="text-center text-dark">{admin.name}</h1>
         <h5 className="text-center text-dark">Admin: {admin.admin_name}</h5>
         
-        <Table striped bordered hover size="sm">
+        <Table className="table table-dark">
           <thead>
             <tr>
               <th>S.NO</th>
