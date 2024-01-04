@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { payment } from "../../redux/create_slice"
+import { payment,statusData } from "../../redux/create_slice"
 import axios from "axios"
 import Button from 'react-bootstrap/Button';
 import { useParams } from "react-router";
@@ -18,8 +18,7 @@ let token=localStorage.getItem('token')
     function change(e){
         dispatch(payment({...pay,month:e.target.value}))
     }
-    const stripe=()=>{
-           
+    const stripe=()=>{  
     let formdata= new FormData()
     formdata.append("group_id",groupid)
     formdata.append("user_id",userid)
@@ -28,8 +27,9 @@ let token=localStorage.getItem('token')
     console.log(pay.amount)
     console.log(pay.month)
     console.log(formdata) 
-        axios.post(`https://agaram.academy/api/shh/index.php?request=add_group_amount&token=${token}`,formdata).then(function(res){console.log(res)})
-        // window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
+
+        axios.post(`https://agaram.academy/api/shh/index.php?request=add_group_amount`,formdata).then(function(res){console.log(res)})
+        window.location="https://buy.stripe.com/test_eVaeYV1Y2dnL4NOcMN"
     }
     return (
         <>
@@ -46,6 +46,7 @@ let token=localStorage.getItem('token')
             <span> <input value="MAR" type="radio" name="JAN" onChange={change } /> March </span>
             
             <span> <input value="APR" type="radio" name="JAN" onChange={change } />April </span>
+
             <span> <input value="MAY" type="radio" name="JAN" onChange={change } /> May </span>
             
             <span> <input value="JUN" type="radio" name="JAN" onChange={change } />June </span>

@@ -40,6 +40,10 @@ const router = createBrowserRouter([
     element:<ShareGroupDetailes />
   },
   {
+    path:"/homepage/:statustoken",
+    element:<ShareGroupDetailes />
+  },
+  {
     path:"/",
     element:<Login />
   },
@@ -54,7 +58,8 @@ const router = createBrowserRouter([
   {
     path:"/groupdetails/:groupid",
     element:<Eachgroupdetailes />
-  },{
+  },
+  {
     path:"/payment/:groupid",
     element:<Payment />
   }

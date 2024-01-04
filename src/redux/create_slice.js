@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit'
 export const CounterSlice = createSlice({
   name: 'userdetail',
   initialState: {
+    statustoken:"",
     statuss:[],
+    statustoken:"",
     emailsend: "",
     individual: [
       
@@ -11,7 +13,7 @@ export const CounterSlice = createSlice({
     admin: {
       members: []
     },
-    status: false,
+    
     membersList: [],
     groupdetailes: {
       groupname: "",
@@ -65,6 +67,10 @@ export const CounterSlice = createSlice({
     statusshow:(state,action)=>{
       state.statuss=action.payload
     },
+    statusToken:(state,action)=>{
+      state.statustoken=action.payload
+    },
+    
     updateAmount:(state,action)=>{
       state.updateamount=action.payload
     },
@@ -74,9 +80,7 @@ export const CounterSlice = createSlice({
     adminData: (state, action) => {
       state.admin = action.payload
     },
-    statusData: (state, action) => {
-      state.status = action.payload
-    },
+    
     addMembers: (state,actions) => {
         state.membersList=actions.payload
     },
@@ -115,24 +119,14 @@ export const CounterSlice = createSlice({
     },
     set_admin_groupname:(state,actions)=>{
       state.admin_groupnames=actions.payload
-    },
-    getRegisterData:(state,action)=>{
-      state.registerData=action.payload
-    },
-    getLoginData:(state,action)=>{
-      state.loginData=action.payload
-    },
-    getloginUser:(state,action)=>{
-        state.loginUserDetails=action.payload
-      },
-    setrefresh:(state,action)=>{
-      state.refresh=action.payload
+  },
+  setrefresh:(state,action)=>{
+    state.refresh=action.payload
 
-    },
-    loader:(state,action)=>{state.loader=action.payload}
-
-  }
+  },
+  loader:(state,action)=>{state.loader=action.payload}
+}
 })
 
-export const { statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, loader,getLoginData, getloginUser, getgroupname, individualData, adminData, statusData, groupdata, eachgroupdata, sendEmails,setrefresh,payment,set_admin_groupname,getadmingroup,setadminid } = CounterSlice.actions
+export const { statusToken,statusshow,updateAmount,addMembers, addgroupdata, getRegisterData, loader,getLoginData, getloginUser, getgroupname, individualData, adminData, groupdata, eachgroupdata, sendEmails,payment,set_admin_groupname,getadmingroup,setadminid,statusData,setrefresh } = CounterSlice.actions
 export default CounterSlice.reducer

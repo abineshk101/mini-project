@@ -16,7 +16,6 @@ import Button from 'react-bootstrap/Button';
 function GroupDetailes() {
   const admin = useSelector((state) => state.userdetail.admin)
   console.log(admin)
-  const status = useSelector((state) => state.userdetail.status)
   const pay = useSelector((state) => state.userdetail.payment)
   const statusss = useSelector((state) => state.userdetail.statuss)
   console.log(statusss)
@@ -34,9 +33,7 @@ console.log(a)
     adminEach()
     statusShow()
   }, [])
-  function back() {
-    navigate(`/groupdetails/${groupid}`)
-  }
+  
   function adminEach() {
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
       .then(res => dispatch(adminData(res.data.data)))
@@ -47,11 +44,14 @@ console.log(a)
         dispatch(statusshow(res.data.data)))
   }
   
-  return (
-    <>
-      {/* <Button type="button" onClick={() => back()}>Go Back</Button> */}
-      <Navbar/>
-      <div class="box">
+    useEffect(() => {
+        axios.get(`https://agaram.academy/api/shh/index.php?request=get_group_details&group_id=${groupid}`)
+          .then(res => dispatch(adminData(res.data.data)))
+      },[])
+    return(
+        <>
+        <Navbar />
+        <div class="box">
         <h1 className="text-center text-dark">{admin.name}</h1>
         <h5 className="text-center text-dark">Admin: {admin.admin_name}</h5>
         
