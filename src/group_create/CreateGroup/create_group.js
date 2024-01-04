@@ -1,11 +1,11 @@
 import Button from "react-bootstrap/esm/Button";
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from "react-router";
-import "./create_group.css";
 import React from "react";
 import axios from "axios";
 import { addgroupdata,setadminid,getadmingroup } from "../../redux/create_slice";
 import { useDispatch,useSelector } from "react-redux";
+import Navbar from "../../login_and_register/header/navbar";
 
 function CreateGroup() {
 
@@ -28,21 +28,12 @@ function CreateGroup() {
     {
       console.log(res)   
     })
-    axios.post(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}`).then
-    (
-        function(res)
-        {
-            console.log(res)
-            dispatch(getadmingroup(res.data.data))
-            navigate("/homepage")
-        }
-    )
     }
     
     return(
      
         <>
-        
+        <Navbar />
       <div id="content">
         <div id="container">
           <h4>Group Create</h4>
@@ -63,7 +54,6 @@ function CreateGroup() {
             <input type="number" class="form-control" id="input" placeholder="amount per month" onKeyUp={(e) => dispatch(addgroupdata({ ...group_detailes, amountpermonth: e.target.value }))}></input>
           </div>
 
-          <Button id="creategroupbutton" className="bn5" onClick={registergroupdata} > craete group</Button> <br />
 
         <Button id="creategroupbutton" className="bn5" onClick={()=>registergroupdata()} > craete group</Button> <br/>
      

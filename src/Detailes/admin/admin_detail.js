@@ -9,6 +9,8 @@ import Badge from 'react-bootstrap/Badge';
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import Button from 'react-bootstrap/Button';
+import Navbar from "../../login_and_register/header/navbar"
+
 
 
 function GroupDetailes() {
@@ -47,12 +49,13 @@ console.log(a)
   
   return (
     <>
-      <Button type="button" onClick={() => back()}>Go Back</Button>
+      {/* <Button type="button" onClick={() => back()}>Go Back</Button> */}
+      <Navbar/>
       <div class="box">
         <h1 className="text-center text-dark">{admin.name}</h1>
         <h5 className="text-center text-dark">Admin: {admin.admin_name}</h5>
         
-        <Table striped bordered hover size="sm">
+        <Table className="table table-dark">
           <thead>
             <tr>
               <th>S.NO</th>
