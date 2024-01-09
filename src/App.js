@@ -1,10 +1,8 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import store from './redux/store';
-import axios from 'axios';
-import { Provider,useSelector } from 'react-redux';
-
-import { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import Test_email from './Detailes/Email/test_email';
 import Login from './login_and_register/login/login'
 import Register from './login_and_register/Register/register';
 import {
@@ -14,7 +12,6 @@ import {
 import UserIndividualDetailes from './Detailes/individual/user_individual_detailes'
 import GroupDetailes from './Detailes/admin/admin_detail';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ContactUs from './Detailes/email';
 import React from 'react';
 import ShareGroupDetailes from './group_create/homepage/homepage_gro';
 import CreateGroup from './group_create/CreateGroup/create_group';
@@ -33,7 +30,7 @@ const router = createBrowserRouter([
   },
   {
     path:"/email",
-    element:<ContactUs/>
+    element:<Test_email/>
   },
   {
     path:"/homepage/:payment",
@@ -62,8 +59,8 @@ const router = createBrowserRouter([
   {
     path:"/payment/:groupid",
     element:<Payment />
-  }
- 
+  },
+
 ]);
 
 

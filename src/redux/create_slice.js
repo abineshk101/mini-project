@@ -5,8 +5,7 @@ export const CounterSlice = createSlice({
   initialState: {
     statustoken:"",
     statuss:[],
-    statustoken:"",
-    emailsend: "",
+    emailsend:{name:"",email:"",message:""},
     individual: [
       
     ],
@@ -27,38 +26,22 @@ export const CounterSlice = createSlice({
       members: []
     },
     eachgroupdata: {},
-    registerData: {
-      name: "",
-      email: "",
-      phone: "",
-      password: ""
-    },
     payment:{
       amount:0,
       month:""
-    },
-    loginData: {
-      email: "",
-      password: ""
     },
     loginUserDetails: {},
     groupnames: [],
     user_groupnames:[],
     admin_groupnames:[],
   
-  groupdata:{
-    members:[]
-  },
   loginData:{email:"",
             password:""},
-  groupnames:[],
   registerData:{name:"",
                 email:"",
                 password:"",
                 phone:"",
                 aadhar:""},
-  user_groupnames:[],
-  admin_groupnames:[],
   admingroup:[],
   updateamount:[],
   loader:false
@@ -99,8 +82,8 @@ export const CounterSlice = createSlice({
       state.admingroup=actions.payload
     },
     
-    sendEmails: (state, action) => {
-      state.emailsend = action.payload
+    sendEmails: (state, actions) => {
+      state.emailsend = actions.payload
     },
     groupdata: (state, actions) => { 
       state.groupdata.members = actions.payload 
