@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element:<Test_email/>
   },
   {
-    path:"/homepage/:payment",
+    path:"/homepage",
     element:<ShareGroupDetailes />
   },
   {

@@ -15,23 +15,23 @@ function Navbar(){
   let loggedin_detail=useSelector((state)=>state.userdetail.loginUserDetails)
   let token=localStorage.getItem('token')
 
-  useEffect(()=>{
-    if(localStorage.getItem('token')&&!loggedin_id)
-        {
-            tokens()
-        }
-},[loggedin_id])
+//   useEffect(()=>{
+//     if(localStorage.getItem('token')&&!loggedin_id)
+//         {
+//             tokens()
+//         }
+// },[loggedin_id])
 
-function tokens()
-{
-    axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
-    {
-        console.log(res)
+// function tokens()
+// {
+//     axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
+//     {
+//         console.log(res)
 
-    dispatch(getloginUser(res.data.data))
-    console.log(loggedin_detail)
-    })
-}
+//     dispatch(getloginUser(res.data.data))
+//     console.log(loggedin_detail)
+//     })
+// }
   function Logout(){
         localStorage.removeItem('token')
         localStorage.removeItem('login')
