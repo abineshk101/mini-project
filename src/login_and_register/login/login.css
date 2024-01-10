@@ -9,13 +9,11 @@
  }
 .login{
     text-align: center;
-    background-image: url('');
     width:500px;
     position: absolute;
     left: 50%;
     top: 60%;
     transform: translate(-50%,-50%);
-      
 }
 .login i{
     margin: 10px;
