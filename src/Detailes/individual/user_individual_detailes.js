@@ -5,10 +5,8 @@ import Card from 'react-bootstrap/Card';
 import './style.css'
 import { individualData,updateAmount,getloginUser} from "../../redux/create_slice";
 import {useSelector,useDispatch } from "react-redux";
-// import { useParams } from "react-router";
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router";
-// import { Navbar } from "react-bootstrap";
 import { useParams } from "react-router"
 import Navbar from "../../login_and_register/header/navbar"
 
@@ -16,9 +14,11 @@ import Navbar from "../../login_and_register/header/navbar"
 function UserIndividualDetailes() {
   const token=localStorage.getItem("token")
   const individual=useSelector((state)=>state.userdetail.individual)
+  const amt=useSelector((state)=>state.userdetail.eachgroupdata)
+  console.log(amt)
+  console.log(individual)
   const loginid=useSelector((state)=>state.userdetail.loginUserDetails.id)
   const updateamount=useSelector((state)=>state.userdetail.updateamount)
-
     console.log(updateamount)
   const statustoken=useSelector((state)=>state.userdetail.statustoken)
     console.log(statustoken)
@@ -26,13 +26,16 @@ function UserIndividualDetailes() {
     console.log(individual)
   const {groupid}=useParams()
   const dispatch=useDispatch()
-  useEffect(()=>
+  useEffect(()=>{
+    if(localStorage.getItem('token')&&!loginid)
         {
-          individualEach()
-          razor()
-            
-        },[]
-    )
+            tokens()
+        }
+    else{
+      individualEach()
+      razor()
+    }
+},[loginid])
     function tokens()
     {
         axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
@@ -47,7 +50,7 @@ function UserIndividualDetailes() {
       .then(res => dispatch(individualData(res.data.data.members)))
   }
   function razor(){
-    axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_payments&group_id=${groupid}&user_id=${loginid}`)
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_payments&group_id=${groupid}&user_id=${loginid}&token=${token}`)
       .then(function(res){dispatch(updateAmount(res.data.data))
       
       })
@@ -83,8 +86,9 @@ function UserIndividualDetailes() {
             <h3>{indi.name}</h3>
             <h3>{indi.email}</h3>
             <h3>{indi.phone}</h3>
-            <h3>{number}</h3>
-            Payment Status: {statustoken?<span class="button">Paid</span>:<span>Pending</span>}<br/>
+            <h3>Total Amount:{number}</h3>
+            {/* {statustoken?"":<h3>This Month:{amt.amount_per_month}</h3>}
+            Payment Status: {statustoken?<span class="button">Paid</span>:<span>Pending</span>}<br/> */}
             </>:""}
             </>
           )}

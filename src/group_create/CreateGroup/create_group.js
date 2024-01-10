@@ -1,9 +1,8 @@
 import Button from "react-bootstrap/esm/Button";
-import Card from 'react-bootstrap/Card';
 import { useNavigate } from "react-router";
 import React from "react";
 import axios from "axios";
-import { addgroupdata,setadminid,getadmingroup } from "../../redux/create_slice";
+import { addgroupdata,setadminid } from "../../redux/create_slice";
 import { useDispatch,useSelector } from "react-redux";
 import Navbar from "../../login_and_register/header/navbar";
 
@@ -56,7 +55,7 @@ function CreateGroup() {
           </div>
 
 
-        <Button id="creategroupbutton" variant="dark" onClick={()=>registergroupdata()} > craete group</Button> <br/>
+        <Button id="creategroupbutton" variant="dark" onClick={()=>registergroupdata()} > create group</Button> <br/>
      
         </div>
       </div>

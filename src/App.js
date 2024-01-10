@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     element:<ContactUs/>
   },
   {
-    path:"/homepage/:payment",
+    path:"/homepage",
     element:<ShareGroupDetailes />
   },
   {

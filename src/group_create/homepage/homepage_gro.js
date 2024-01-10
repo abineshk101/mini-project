@@ -14,8 +14,11 @@ function ShareGroupDetailes()
      
     let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
     let refresh=useSelector((state)=>state.userdetail.refresh)
+    let tok=useSelector((state)=>state.userdetail.statustoken)
+    console.log(tok)
     let token=localStorage.getItem('token')
     let{statustoken}=useParams()
+    console.log(statustoken)
     dispatch(statusToken(statustoken))
     useEffect(()=>
         {
