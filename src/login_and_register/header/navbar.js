@@ -68,7 +68,7 @@ function tokens()
           <h4> Your Mail:{logindata.email}</h4>
       </li>
       <li>
-        <Link to='/homepage'>Home</Link>
+        <Link to='/homepage/:payment'>Home</Link>
       </li>
      {/* <li>
       <h4>Group  as user:{groupcount.length}</h4>

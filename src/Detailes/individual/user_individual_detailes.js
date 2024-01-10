@@ -47,7 +47,7 @@ function UserIndividualDetailes() {
       .then(res => dispatch(individualData(res.data.data.members)))
   }
   function razor(){
-    axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_payments&group_id=${groupid}&user_id=${loginid}`)
+    axios.get(`https://agaram.academy/api/shh/index.php?request=get_user_payments&group_id=${groupid}&user_id=${loginid}&token=${token}`)
       .then(function(res){dispatch(updateAmount(res.data.data))
       
       })

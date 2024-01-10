@@ -39,9 +39,9 @@ let currentdate=moment().format(` MM/DD/YYYY`)
 let afterdeadlinedate=deadlinedate+1;
 let totalmonth=(Number(group_data.total_month))
 let groupdeletemonth =moment().add(totalmonth, 'month').calendar();
-let afterdeadlinedateformat =moment().format(`${afterdeadlinedate} MMMM YYYY`);
+let afterdeadlinedateformat =moment().format(`MM/${afterdeadlinedate}/YYYY`);
 let deadlinecounter=moment(`${deadlinedateformat}`, "DD").fromNow();
-let addmonth =moment().add(1, 'month').calendar()
+let addmonth =moment().add(1, 'month').format(`MM/${afterdeadlinedate}/YYYY`)
 let token=localStorage.getItem("token")
 const {groupid}= useParams()
 const navigate=useNavigate()
@@ -72,6 +72,7 @@ const apidata=()=>
         dispatch(groupdata(res.data.data.members))
         dispatch(eachgroupdata(res.data.data))
         dispatch(loader(true))
+        console.log(res)
         
     }
     )
@@ -134,15 +135,23 @@ function deadlinealert()
         dispatch(loader(false))
         navigate('/homepage')
     }
-// function adddateafterdeadline()
-// {
-//     if(afterdeadlinedateformat==currentdate)
-//     {
+function adddateafterdeadline()
+{
+    if(currentdate<=deadlinedateformat)
+    {
 
-//         let addmonth =moment().add(1, 'month').calendar()
-//         deadlinedateformat=moment().format(`${deadline} ${addmonth} YYYY`)
-//     }
-// }
+        deadlinedateformat=moment().format(`${deadlinedate}/MM/YYYY`)
+        alert(1)
+        
+    }
+    else
+    {
+        alert(2)
+    }
+    console.log(currentdate,deadlinedateformat)
+    console.log(typeof(currentdate),typeof(deadlinedateformat))
+
+}
     return(
         <>
         <Navbar />
@@ -171,6 +180,7 @@ function deadlinealert()
        </ListGroup>
         </CardBody></Card>
         </Button>
+       
         {
         separte_group_members.map(
             (id)=>{
