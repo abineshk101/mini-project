@@ -1,29 +1,35 @@
- .containers{
-    /* background-image: url('https://img.freepik.com/free-photo/dollar-banknotes-frame_1150-6686.jpg'); */
-    background-color: yellow;
-    /* height: 200vh; */
-    background-repeat: no-rept;
-    background-size: cover;
-    position: relative;
-    
+ .containers {
+     /* background-image: url('https://img.freepik.com/free-photo/dollar-banknotes-frame_1150-6686.jpg'); */
+     /* background-color: yellow; */
+     background-color: #00DBDE;
+     background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+
+     /* height: 200vh; */
+     background-repeat: no-rept;
+     background-size: cover;
+     position: relative;
+
  }
-.login{
-    text-align: center;
-    background-image: url('');
-    width:500px;
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%,-50%);
-}
-.login i{
-    margin: 10px;
-    color: #000;
-}
-.login h1{
-    color: black;
-}
-.login label
-{
-    color: black;
-}
+
+ .login {
+     text-align: center;
+     background-image: url('');
+     width: 500px;
+     position: absolute;
+     left: 50%;
+     top: 60%;
+     transform: translate(-50%, -50%);
+ }
+
+ .login i {
+     margin: 10px;
+     color: #000;
+ }
+
+ .login h1 {
+     color: black;
+ }
+
+ .login label {
+     color: black;
+ }
