@@ -1,0 +1,9 @@
+.emailForm{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#dev1{
+    margin: 10px 400px;
+}
