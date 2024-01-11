@@ -3,9 +3,15 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Navbar from "../../login_and_register/header/navbar";
 import { useEffect } from "react";
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+
 import { useNavigate ,useParams} from "react-router";
 import { useSelector,useDispatch } from "react-redux";
-import { getgroupname,set_admin_groupname,getloginUser,statusToken } from "../../redux/create_slice";
+import { getgroupname,set_admin_groupname,statusToken,getloginUser } from "../../redux/create_slice";
 
 function ShareGroupDetailes()
 {  
@@ -22,7 +28,7 @@ function ShareGroupDetailes()
             if(localStorage.getItem('token')&&!loggedin_id)
             {
                 tokens()
-                // securealert()
+                securealert()
             }
             else
             {    
@@ -31,9 +37,6 @@ function ShareGroupDetailes()
             }
         },[loggedin_id]
     )
-
-
-   
     let loggedin_detail=useSelector((state)=>state.userdetail.loginUserDetails)
     let groupname=useSelector((state)=>state.userdetail.user_groupnames)
     let show_admin_groupnames=useSelector((state)=>state.userdetail.admin_groupnames)
@@ -51,9 +54,7 @@ function ShareGroupDetailes()
     function admin_groups(){
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}&token=${token}`).then(function(res){
         dispatch(set_admin_groupname(res.data.data))
-
-    })
-    }
+    })}
     function tokens()
     {
         axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
@@ -82,11 +83,8 @@ function ShareGroupDetailes()
             navigate('/')
         }
     }
-
-
     return(
         <>
-
         <Navbar />
         <div style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
       
@@ -110,20 +108,47 @@ function ShareGroupDetailes()
         {
         show_admin_groupnames.map((data)=>{
             return (<>
-            <div>
-                <ul style={{listStyle:"none"}}>
+            
+             {/* <div>  */}
+         
+             <Card style={{ width: '18rem' }}>
+
+             <Card.Img variant="top" src="group.jpg" />
+            <Card.Body>
+            <Card.Title>Card Title</Card.Title>
+            <Card.Text> 
+              Some quick example text to build on the card title and make up the
+             bulk of the card's content.
+            </Card.Text>
+        <Button variant="primary"  onClick={()=>groupnav(data.id)}>{data.name}</Button>
+      </Card.Body> 
+     </Card> 
+   
+   <Container>
+      <Row>
+        <Col xs={6} md={4}>
+          <Image src="holder.js/171x180" rounded />
+        </Col>
+        <Col xs={6} md={4}>
+          <Image src="holder.js/171x180" roundedCircle />
+        </Col>
+        <Col xs={6} md={4}>
+          <Image src="holder.js/171x180" thumbnail />
+        </Col>
+      </Row>
+    </Container>
+                {/* <ul>
                 <li><Button type="button" variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
                 </ul>
-            </div>
+            </div> */}
                 </>
             )
         }
         )
         }
         <Button type="button" variant="dark" onClick={()=>creategroup()} >Create Group</Button>
-        <br/><br/>
         </div>
         </>
     )
-    }
+}
 export default ShareGroupDetailes

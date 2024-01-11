@@ -15,9 +15,15 @@
     left: 50%;
     top: 60%;
     transform: translate(-50%,-50%);
-      
 }
-.login:hover{
-    z-index: 1;
-    filter: drop-shadow(5px 5px 6px rgba(0,0,0,0.5) );
+.login i{
+    margin: 10px;
+    color: #000;
+}
+.login h1{
+    color: black;
+}
+.login label
+{
+    color: black;
 }

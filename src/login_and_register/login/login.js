@@ -16,12 +16,7 @@ function Login(){
     console.log(getuserIdData)
         const dispatch=useDispatch()                                 
         const navigate=useNavigate()
-useEffect(()=>{
-    if(localStorage.getItem("token")){
-       navigate('/homepage')
-    
-}
-},[])
+
     const sendemail=useSelector((state)=>state.userdetail.emailsend)
     const eachgroup=useSelector((state)=>state.userdetail.eachgroupdata)
     console.log(sendemail)
@@ -51,13 +46,8 @@ const checkLogin=()=>{
         dispatch(getloginUser(res.data.data))
         localStorage.setItem("login","success")
         localStorage.setItem("token",res.data.token)
-     if(sendemail.mail){
-      if(sendemail.mail===loginUserData.mail){
-        addUser()
-      }
-     }
         navigate('/homepage')
-        }
+      }
       else{
         alert("enter the valid email or password")
       }
@@ -68,8 +58,6 @@ const checkLogin=()=>{
 const checkclientRegister=()=>{
   navigate('/register')
 }
-
-
     return(
         <>
          <div>
@@ -95,4 +83,4 @@ const checkclientRegister=()=>{
         </>
     )
 }
-export default Login;
+export default Login

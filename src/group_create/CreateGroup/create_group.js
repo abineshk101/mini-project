@@ -11,8 +11,8 @@ function CreateGroup() {
 
   const  group_detailes=useSelector(state=>state.userdetail.groupdetailes)
   let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
-
-
+  let token=localStorage.getItem('token')
+  console.log(token)
   const dispatch=useDispatch()
   const navigate=useNavigate()
   dispatch(setadminid(loggedin_id))
@@ -24,10 +24,10 @@ function CreateGroup() {
       formdata.append("admin_id",group_detailes.adminid)
 
   const registergroupdata=()=>{
-    axios.post(`https://agaram.academy/api/shh/index.php?request=create_group`,formdata).then(function(res)
+    axios.post(`https://agaram.academy/api/shh/index.php?request=create_group&token=${token}`,formdata).then(function(res)
     {
       console.log(res)   
-      navigate("/homepage")
+      navigate("/homepage/:payment")
     })
     }
     
@@ -56,7 +56,7 @@ function CreateGroup() {
           </div>
 
 
-        <Button id="creategroupbutton" className="bn5" onClick={()=>registergroupdata()} > craete group</Button> <br/>
+        <Button id="creategroupbutton" variant="dark" onClick={()=>registergroupdata()} > craete group</Button> <br/>
      
         </div>
       </div>

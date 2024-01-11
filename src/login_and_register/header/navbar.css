@@ -37,7 +37,7 @@ body {
   }
   
   .menu-container a:hover {
-    color:yellow;
+    color:rgb(222, 233, 75);
   }
   
   .menu-container input {

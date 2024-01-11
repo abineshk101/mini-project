@@ -20,6 +20,7 @@ import ShareGroupDetailes from './group_create/homepage/homepage_gro';
 import CreateGroup from './group_create/CreateGroup/create_group';
 import Eachgroupdetailes from './Detailes/GroupDetailes/groupdetailes';
 import Payment from './Detailes/individual/payment';
+import Frontpage from './login_and_register/FrontPage/frontpage';
 
 const router = createBrowserRouter([
   
@@ -58,28 +59,22 @@ const router = createBrowserRouter([
   {
     path:"/groupdetails/:groupid",
     element:<Eachgroupdetailes />
-  },{
+  },
+  {
     path:"/payment/:groupid",
     element:<Payment />
-  }
+  },
+  {
+    path:"/Frontpage",
+    element:<Frontpage />
+  },
+
  
 ]);
 
 
 function App() {
 
-      // function maintain_session(){
-        // axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res){
-        //     console.log(res.data.data)
-        // })
-    //   }
-      
-    //   let loggedin_id=useSelector((state)=>state.userdetail.loginUserDetails.id)
-    //   let token=localStorage.getItem("token")
-    //   useEffect(()=>{
-    //       if(!loggedin_id && token )
-    //       maintain_session()
-    //     },[loggedin_id])  
 
 
 
