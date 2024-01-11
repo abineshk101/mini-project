@@ -42,7 +42,6 @@ export default function Test_email(){
     return(<>
         <Navbar />
         <form onSubmit={handlesubmit} className="emailForm">
-        {/* {JSON.stringify(user.name)} */}
             <input id="dev1" type="text" placeholder="name"  onChange={(e)=>{dispatch(sendEmails({...mail_info,name:e.target.value}))}}></input>
             <input id="dev1" type="text" placeholder="email"  onChange={(e)=>{dispatch(sendEmails({...mail_info,email:e.target.value}))}}></input>
             <textarea id="dev1"  onChange={(e)=>{dispatch(sendEmails({...mail_info,message:e.target.value}))}}></textarea>
