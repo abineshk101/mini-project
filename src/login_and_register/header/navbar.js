@@ -70,12 +70,6 @@ function tokens()
       <li>
         <Link to='/homepage'>Home</Link>
       </li>
-     {/* <li>
-      <h4>Group  as user:{groupcount.length}</h4>
-     </li>
-     <li>
-      <h4>Group  as admin:{admingroupcount.length}</h4>
-     </li> */}
     </ul>
     <ul>
       <li>

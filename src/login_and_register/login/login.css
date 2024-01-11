@@ -10,26 +10,22 @@
      position: relative;
 
  }
-
- .login {
-     text-align: center;
-     background-image: url('');
-     width: 500px;
-     position: absolute;
-     left: 50%;
-     top: 60%;
-     transform: translate(-50%, -50%);
- }
-
- .login i {
-     margin: 10px;
-     color: #000;
- }
-
- .login h1 {
-     color: black;
- }
-
- .login label {
-     color: black;
- }
+.login{
+    text-align: center;
+    width:500px;
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%,-50%);
+}
+.login i{
+    margin: 10px;
+    color: #000;
+}
+.login h1{
+    color: black;
+}
+.login label
+{
+    color: black;
+}
