@@ -1,11 +1,16 @@
 import React from "react";
 import axios from "axios";
+
 import Button from 'react-bootstrap/Button';
-import Navbar from "../../login_and_register/header/navbar";
+import Card from 'react-bootstrap/Card';
+import Navbar from 'react-bootstrap/Navbar';
+
+import Navbares from "../../login_and_register/header/navbar";
 import { useEffect } from "react";
 import { useNavigate ,useParams} from "react-router";
 import { useSelector,useDispatch } from "react-redux";
-import { getgroupname,set_admin_groupname,getloginUser,statusToken } from "../../redux/create_slice";
+import './homepage_gro.css'
+import { getgroupname,set_admin_groupname,statusToken,getloginUser } from "../../redux/create_slice";
 
 function ShareGroupDetailes()
 {  
@@ -22,7 +27,7 @@ function ShareGroupDetailes()
             if(localStorage.getItem('token')&&!loggedin_id)
             {
                 tokens()
-                // securealert()
+                securealert()
             }
             else
             {    
@@ -31,9 +36,6 @@ function ShareGroupDetailes()
             }
         },[loggedin_id]
     )
-
-
-   
     let loggedin_detail=useSelector((state)=>state.userdetail.loginUserDetails)
     let groupname=useSelector((state)=>state.userdetail.user_groupnames)
     let show_admin_groupnames=useSelector((state)=>state.userdetail.admin_groupnames)
@@ -51,9 +53,7 @@ function ShareGroupDetailes()
     function admin_groups(){
     axios.get(`https://agaram.academy/api/shh/index.php?request=get_all_groups&admin_id=${loggedin_id}&token=${token}`).then(function(res){
         dispatch(set_admin_groupname(res.data.data))
-
-    })
-    }
+    })}
     function tokens()
     {
         axios.get(`https://agaram.academy/api/shh/index.php?request=getUserDetailsByToken&token=${token}`).then(function(res)
@@ -82,23 +82,27 @@ function ShareGroupDetailes()
             navigate('/')
         }
     }
-
-
     return(
         
         <>
-        <Navbar />
-        <div style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
+        <Navbares />
+        <div >
+        <div style={{display:"flex",flexDirection:"column"}}>
       
-        <h2>Self Help Hub</h2>
+        {/* <h1>Self Help Hub</h1> */}
         <h2>Users Groups</h2>
         {
         groupname.map((data)=>{
             return (<>
             <div>
-                <ul>
-                <li><Button type="button"className=".bn5" variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
-                </ul>
+            <button style={{marginRight:"40px",marginBottom:"40px",marginLeft:"40px",}} variant="primary" onClick={()=>groupnav(data.id)}>
+            <Card style={{ width: '18rem',marginRight:"40px",marginBottom:"40px",marginTop:"20px",marginLeft:"" }}>
+      <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw5lW-oMaA8C3mqvp4-u1dXrv4cUmRBweMnw&usqp=CAU" />
+      <Card.Body>
+        <Card.Title>{data.name}</Card.Title>
+      </Card.Body>
+    </Card>
+    </button>
             </div>
                 </>
             )
@@ -107,24 +111,34 @@ function ShareGroupDetailes()
 
 
         <h2>Admin group</h2>
+        <div className="dataflex" style={{display:"flex",flexWrap: "wrap"}}>
         {
         show_admin_groupnames.map((data)=>{
+            if(data.name!=""){
             return (<>
             <div>
-                <ul style={{listStyle:"none"}}>
-                <li><Button type="button" variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
-                </ul>
+            <button style={{marginBottom:"40px",marginRight:"40px",marginLeft:"40px"}}variant="primary" onClick={()=>groupnav(data.id)}>
+            <Card style={{ width: '18rem',marginRight:"40px",marginBottom:"40px",marginLeft:"40px",marginTop:"20px" }}>
+      <Card.Img variant="top" src="https://png.pngtree.com/png-clipart/20230825/original/pngtree-people-celebrate-picture-image_8649314.png" />
+      <Card.Body>
+        <Card.Title>{data.name}</Card.Title>
+      </Card.Body>
+    </Card>
+                {/* <ul>
+                <li><Button type="button"  variant="outline-dark" onClick={()=>groupnav(data.id)}>{data.name}</Button></li>
+                </ul> */}
+                </button>
             </div>
                 </>
             )
-        }
+        }}
         )
-        }
+        }</div>
         <Button type="button" variant="dark" onClick={()=>creategroup()} >Create Group</Button>
-        <br/><br/>
+        </div>
         </div>
         </>
         
     )
-    }
+}
 export default ShareGroupDetailes

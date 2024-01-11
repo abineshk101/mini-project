@@ -1,0 +1,27 @@
+.pic{
+    background-image: url('https://img.freepik.com/free-vector/saving-money-concept-illustration_114360-8060.jpg?w=996&t=st=1704879123~exp=1704879723~hmac=5d2afb519c89c484e94ccc11f8156d6db067832b8381af394b36ea1de8830942');
+    border-image: stretch;
+    opacity: .6;
+}
+h1 {
+    width:500px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Source Sans 3';
+    font-weight: 900;
+    font-size: 35px;
+    color:black;
+    text-shadow: 2px 2px 5px black;
+    /* margin-top: -20px; */
+}
+h2{
+    width:500px;
+    font-family: 'Source Sans 3';
+    font-weight: 900;
+    font-size: 35px;
+    color:black;
+    text-shadow: 2px 2px 5px black;
+} 
+li::marker{
+    content: ""
+}

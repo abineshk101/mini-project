@@ -3,15 +3,15 @@
 }
 
 body {
-    /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(249,232,51,1) 0%, rgba(250,196,59,1) 100.2% ); */
-    background:rgb(217, 224, 5);
+    /* background-image:
+    background:rgb(238, 236, 236);
     height: 100vh;
     margin: 0;
     /* display: flex; */
     justify-content: center;
     align-items: center;
     color: black;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); */
     font-style:normal;
 }
 .but{

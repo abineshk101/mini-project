@@ -10,14 +10,17 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    background:black;
-    color: white;
+    color: rgb(18, 17, 17);
     padding: 20px;
     z-index: 1;
     -webkit-user-select: none;
     user-select: none;
     box-sizing: border-box;
   }
+  nav {
+    box-shadow: 0 2px 4px 0  rgba(237, 150, 10, 0.829);
+  }
+  
   
   .menu-logo {
     line-height: 0;
@@ -35,11 +38,9 @@ body {
     color: #232323;
     transition: color 0.3s ease;
   }
-  
-  .menu-container a:hover {
-    color:yellow;
+ .menu-container a:hover {
+    color:rgb(185, 41, 41);
   }
-  
   .menu-container input {
     display: block;
     width: 35px;
@@ -146,7 +147,7 @@ body {
     }
   
     .menu-container a {
-      color: white;
+      color: rgb(21, 20, 20);
     }
   
     .menu-container input {

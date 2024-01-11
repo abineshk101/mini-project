@@ -1,7 +1,5 @@
- .containers{
-    /* background-image: url('https://img.freepik.com/free-photo/dollar-banknotes-frame_1150-6686.jpg'); */
+  /* .containers{
     background-color: yellow;
-    /* height: 200vh; */
     background-repeat: no-rept;
     background-size: cover;
     position: relative;
@@ -15,12 +13,19 @@
     left: 50%;
     top: 60%;
     transform: translate(-50%,-50%);
-      
-}
-.login:hover{
-    z-index: 1;
-    filter: drop-shadow(5px 5px 6px rgba(0,0,0,0.5) );
+} */
+.image{
+    background-image: url("https://img.freepik.com/free-vector/piggy-bank-concept-illustration_114360-5512.jpg?w=740&t=st=1704862613~exp=1704863213~hmac=1abbec3f95bde5d3f7339fb15e2087e2f51099285fd9c2b690cc8d0683bf5e34");
+    height: 100vh;
 }
 .login i{
-    padding: 6px;
+    margin: 10px;
+    color: #000;
+} 
+.login h1{
+    color: black; 
 }
+.login label
+{
+    color: black;
+} 
