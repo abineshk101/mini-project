@@ -36,7 +36,7 @@ let token=localStorage.getItem('token')
         <div style={{display:"flex",justifyContent:"center", alignItems:"center",flexDirection:"column"}}>
             <h1>Enter your Payment:</h1>
             <label>Enter your amount:</label>
-            <input type="text" value={100} onKeyUp={(e)=>{dispatch(payment({...pay,amount:e.target.value}))}}/>
+            <input type="text"  onKeyUp={(e)=>{dispatch(payment({...pay,amount:e.target.value}))}}/>
             <label>Select the month:</label>
             
             <span> <input value="JAN" type="radio" name="JAN" onChange={change }  />January </span>
